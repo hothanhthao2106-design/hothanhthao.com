@@ -1,0 +1,50 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "public/uploads"
+public_folder: "/uploads"
+
+collections:
+  - name: "site_content"
+    label: "Quản lý Nội dung Website"
+    files:
+      - file: "public/data/content.json"
+        label: "Nội dung Website"
+        name: "homepage"
+        fields:
+          - label: "Hero Header"
+            name: "hero"
+            widget: "object"
+            fields:
+              - { label: "Họ tên", name: "name", widget: "string" }
+              - { label: "Danh xưng", name: "sub", widget: "string" }
+              - { label: "Tagline", name: "tagline", widget: "text" }
+              - { label: "Ghi chú Still", name: "still_note", widget: "string" }
+              - { label: "Ảnh Hero", name: "hero_img", widget: "image" }
+          - label: "Danh sách Phim"
+            name: "films"
+            widget: "list"
+            fields:
+              - { label: "ID", name: "id", widget: "string" }
+              - { label: "Tên Tiếng Việt", name: "title_vi", widget: "string" }
+              - { label: "Tên Tiếng Anh", name: "title_en", widget: "string", required: false }
+              - { label: "Trạng thái", name: "status", widget: "string", required: false }
+              - { label: "Năm", name: "year", widget: "string", required: false }
+              - { label: "Thể loại", name: "type", widget: "string" }
+              - { label: "Tóm tắt ngắn", name: "desc", widget: "text", required: false }
+              - { label: "Tóm tắt đầy đủ (Trang chi tiết)", name: "full_synopsis", widget: "text", required: false }
+              - { label: "Link Trailer", name: "trailer_url", widget: "string", required: false }
+              - { label: "Hình ảnh", name: "image", widget: "image" }
+          - label: "Câu chuyện"
+            name: "stories"
+            widget: "list"
+            fields:
+              - { label: "Tiêu đề", name: "title", widget: "string" }
+              - { label: "Năm", name: "year", widget: "string" }
+          - label: "Archive"
+            name: "archive"
+            widget: "list"
+            fields:
+              - { label: "Tiêu đề", name: "title", widget: "string" }
+              - { label: "Năm", name: "year", widget: "string" }
