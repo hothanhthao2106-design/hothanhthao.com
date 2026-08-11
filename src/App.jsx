@@ -1,144 +1,446 @@
-{\rtf1\ansi\ansicpg1252\cocoartf2761
-\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
-{\colortbl;\red255\green255\blue255;}
-{\*\expandedcolortbl;;}
-\paperw11900\paperh16840\margl1440\margr1440\vieww11520\viewh8400\viewkind0
-\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+import { Link, NavLink, Route, Routes, useLocation, useParams } from 'react-router-dom'
+import { useEffect, useState } from 'react'
 
-\f0\fs24 \cf0 import React, \{ useState, useEffect \} from 'react';\
-import './App.css';\
-\
-export default function App() \{\
-  const [content, setContent] = useState(null);\
-\
-  useEffect(() => \{\
-    fetch('/data/content.json')\
-      .then((res) => res.json())\
-      .then((data) => setContent(data))\
-      .catch((err) => console.error('L\uc0\u7895 i n\u7841 p d\u7919  li\u7879 u:', err));\
-  \}, []);\
-\
-  if (!content) return <div style=\{\{ padding: '40px', textAlign: 'center' \}\}>Loading...</div>;\
-\
-  const \{ hero, films, stories, archive \} = content;\
-\
-  return (\
-    <div>\
-      <section className="hero-section" style=\{\{ backgroundImage: `url($\{hero.hero_img\})` \}\}>\
-        <div className="hero-overlay"></div>\
-        <div className="hero-header">\
-          <div>\
-            <h1 className="brand-name">\{hero.name\}</h1>\
-            <p className="brand-sub">\{hero.sub\}</p>\
-          </div>\
-          <nav className="hero-nav">\
-            <a href="#about">Gi\uc0\u7899 i thi\u7879 u</a>\
-            <a href="#films">Phim</a>\
-            <a href="#stories">C\'e2u chuy\uc0\u7879 n</a>\
-            <a href="#notes">T\uc0\u7853 p t\'e0nh</a>\
-            <a href="#archive">Archive</a>\
-            <a href="#support" className="highlight-red">\uc0\u272 \u7891 ng h\'e0nh</a>\
-          </nav>\
-        </div>\
-        <div className="hero-content">\
-          <h2 className="hero-tagline">\{hero.tagline\}</h2>\
-          <p className="hero-still-note">\{hero.still_note\}</p>\
-        </div>\
-      </section>\
-\
-      <section id="films" className="films-section">\
-        \{films.map((film) => \{\
-          const isFeatured = film.status === 'IN DEVELOPMENT';\
-          return (\
-            <div key=\{film.id\} className="film-item">\
-              <div>\
-                <p className="film-num">\{film.id\}</p>\
-                <a href=\{`#film-$\{film.id\}`\} className="film-title-link">\
-                  <h3 className="film-title">\
-                    \{film.title_vi\} \{film.title_en && <span>(\{film.title_en\})</span>\}\
-                  </h3>\
-                </a>\
-                \{film.status && <p className="film-status">\{film.status\}</p>\}\
-                <p className="film-meta">\{film.year && `$\{film.year\} \'95 `\}\{film.type\}</p>\
-                \{film.note && <p style=\{\{ fontStyle: 'italic', color: '#555', marginBottom: '8px' \}\}>\{film.note\}</p>\}\
-                <p className="film-desc">\{film.desc\}</p>\
-              </div>\
-              <div>\
-                <a href=\{`#film-$\{film.id\}`\} className=\{`film-img-anchor $\{isFeatured ? 'featured-img' : 'standard-img'\}`\}>\
-                  <img src=\{film.image\} alt=\{film.title_vi\} />\
-                </a>\
-              </div>\
-            </div>\
-          );\
-        \})\}\
-      </section>\
-\
-      <section className="bottom-grid">\
-        <div id="stories">\
-          <h4 className="sec-title">C\'e2u Chuy\uc0\u7879 n</h4>\
-          \{stories.map((item, i) => (\
-            <a key=\{i\} href=\{`#story-$\{i\}`\} className="list-row-link">\
-              <span>\{item.title\}</span>\
-              <span className="year">\{item.year\}</span>\
-            </a>\
-          ))\}\
-        </div>\
-        <div id="notes">\
-          <h4 className="sec-title">T\uc0\u7853 p T\'e0nh</h4>\
-          <div className="gallery-grid">\
-            <a href="#gallery-1"><img src="https://images.unsplash.com/photo-1485846234645-a62644f84728?q=80&w=300" alt="Note 1" /></a>\
-            <a href="#gallery-2"><img src="https://images.unsplash.com/photo-1518676590629-3dcbd9c5a5c9?q=80&w=300" alt="Note 2" /></a>\
-            <a href="#gallery-3"><img src="https://images.unsplash.com/photo-1478720568477-152d9b164e26?q=80&w=300" alt="Note 3" /></a>\
-            <a href="#gallery-4"><img src="https://images.unsplash.com/photo-1536440136628-849c177e76a1?q=80&w=300" alt="Note 4" /></a>\
-            <a href="#gallery-5"><img src="https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?q=80&w=300" alt="Note 5" /></a>\
-            <a href="#gallery-6"><img src="https://images.unsplash.com/photo-1485846234645-a62644f84728?q=80&w=300" alt="Note 6" /></a>\
-          </div>\
-        </div>\
-        <div id="archive">\
-          <h4 className="sec-title">Archive</h4>\
-          \{archive.map((item, i) => (\
-            <a key=\{i\} href=\{`#archive-$\{i\}`\} className="list-row-link">\
-              <span>\{item.title\}</span>\
-              <span className="year">\{item.year\}</span>\
-            </a>\
-          ))\}\
-        </div>\
-      </section>\
-\
-      <section id="support" className="support-section">\
-        <div>\
-          <h4 className="sec-title red-title">\uc0\u272 \u7890 NG H\'c0NH C\'d9NG A VISA PHOTO</h4>\
-          <p style=\{\{ color: '#555', lineHeight: '1.7' \}\}>\
-            A Visa Photo hi\uc0\u7879 n \u273 ang trong qu\'e1 tr\'ecnh ph\'e1t tri\u7875 n. N\u7871 u b\u7841 n mu\u7889 n \u273 \u7891 ng h\'e0nh c\'f9ng d\u7921  \'e1n ho\u7863 c nh\u7919 ng b\u7897  phim ti\u7871 p theo, b\u7841 n c\'f3 th\u7875  h\u7895  tr\u7907  b\u7857 ng m\u7897 t trong c\'e1c h\'ecnh th\u7913 c d\u432 \u7899 i \u273 \'e2y.\
-          </p>\
-        </div>\
-        <div className="support-methods">\
-          <div className="qr-box">\
-            <img src="https://api.qrserver.com/v1/create-qr-code/?size=100x100&data=whattrueechoes" alt="QR" className="qr-code" />\
-            <div>\
-              <p style=\{\{ fontWeight: '600', fontSize: '11px' \}\}>Chuy\uc0\u7875 n kho\u7843 n n\u7897 i \u273 \u7883 a</p>\
-              <p style=\{\{ color: '#666', fontSize: '10px' \}\}>Qu\'e9t m\'e3 QR</p>\
-              <p style=\{\{ color: '#666', fontSize: '10px', marginTop: '4px' \}\}>Ch\uc0\u7911  TK: NGUYEN [H\u7885  t\'ean]</p>\
-            </div>\
-          </div>\
-          <div className="wise-box">\
-            <p style=\{\{ fontWeight: '600', fontSize: '11px' \}\}>Qu\uc0\u7889 c t\u7871  qua Wise</p>\
-            <p style=\{\{ color: '#666', fontSize: '10px' \}\}>D\'e0nh cho \uc0\u273 \u7889 i t\'e1c & Qu\u7929  qu\u7889 c t\u7871 </p>\
-            <a href="https://wise.com" target="_blank" rel="noreferrer" className="wise-link">\
-              wise.com/pay/me/hothanhthao \uc0\u8599 \
-            </a>\
-          </div>\
-        </div>\
-      </section>\
-\
-      <footer id="about">\
-        <p>\'a9 2025 H\uc0\u7891  Thanh Th\u7843 o \'97 All rights reserved.</p>\
-        <div>\
-          <a href="#">Instagram</a>\
-          <a href="#">Facebook</a>\
-          <a href="mailto:contact@whattrueechoes.app">Email</a>\
-        </div>\
-      </footer>\
-    </div>\
-  );\
-\}}
+const films = [
+  {
+    number: '01',
+    slug: 'mot-tam-hinh-thi-thuc',
+    title: 'Một tấm hình thị thực',
+    details: 'Đang phát triển · Phim ngắn',
+    description: 'Tìm kiếm đối tác tài trợ và sản xuất.',
+    image: '/Images/Avisaphoto.jpg',
+    awards: '',
+  },
+  {
+    number: '02',
+    slug: 'diem-bao',
+    title: 'Điềm Báo',
+    details: '2025 · Phim ngắn · Drama',
+    description:
+      'Sau một khoảnh khắc thay đổi, nhân vật chính nhìn thấy những giấc mơ nhức nhối về một người đàn ông xa lạ.',
+    image: '/Images/Omen4.png',
+    awards: 'Lựa chọn chính thức · SSFF & ASIA\nLựa chọn chính thức · Jogja-NETPAC\nLựa chọn chính thức · Bengaluru International Film Festival',
+  },
+  {
+    number: '03',
+    slug: 'duong-cao-toc',
+    title: 'Đường Cao Tốc',
+    details: '2020 · Phim ngắn · Drama',
+    description:
+      'Sau nhiều tháng không nhận được lương, một người trẻ bắt đầu tìm kiếm khách hàng ngay trong bối cảnh công việc.',
+    image: '/Images/DCT.png',
+    awards: 'Giải Cánh Diều Bạc\nDanh sách rút gọn · Quinzaine des Réalisateurs',
+  },
+  {
+    number: '04',
+    slug: 'muon',
+    title: 'Muộn',
+    details: '2017 · Phim ngắn · Drama',
+    description:
+      'Trong một buổi nhậu đêm khuya, một cô gái trẻ bắt ngờ trở nên thân mật với một tay giang hồ.',
+    image: '/Images/Ephemera.png',
+    awards: 'Giải Búp Sen Vàng\nLựa chọn chính thức · Singapore International Film Festival',
+  },
+]
+
+const stories = [
+  ['Làm phim với rất ít tiền', '2026'],
+  ['Điều còn sót lại sau mỗi bộ phim', '2025'],
+  ['Vì sao tôi quay nhiều cảnh đêm', '2024'],
+  ['Một ngày ở Jogja', '2024'],
+  ['Những bộ phim đã nuôi tôi', '2023'],
+]
+
+const archive = [
+  '/Images/Archive/274056339_2997416303922233_7582249236786053186_n.jpeg',
+  '/Images/Archive/29514_112549345452505_2308406_n.jpeg',
+  '/Images/Archive/44528254_2684287341612013_5180671027964805120_n.jpeg',
+  '/Images/Archive/5511bbca4de919f0d685d721a9c34c84.JPG',
+  '/Images/Archive/5713310c1f628273d8b7bc52b6fce612.JPEG',
+  '/Images/Archive/DUG_5884 copy.jpeg',
+  '/Images/Archive/JAFF20-D7-@ASHRAFALKHAWARIZMI-RAP05677.jpg',
+  '/Images/Archive/JAFF20-D7-@ASHRAFALKHAWARIZMI-RAP05689.jpg',
+  '/Images/Archive/JAFF20-D7-@ASHRAFALKHAWARIZMI-RAP05690.jpg',
+  '/Images/Archive/JAFF20-D7-@ASHRAFALKHAWARIZMI-RAP05756.jpg',
+  '/Images/Archive/JAFF20-D7-@ASHRAFALKHAWARIZMI-RAP05772.jpg',
+  '/Images/Archive/JAFF20-D7-@ASHRAFALKHAWARIZMI-RAP05778.jpg',
+  '/Images/Archive/JAFF20-D7-@ASHRAFALKHAWARIZMI-RAP05783.jpg',
+  '/Images/Archive/JAFF20-D7-@ASHRAFALKHAWARIZMI-RAP05789.jpg',
+  '/Images/Archive/JAFF20-D7-@ASHRAFALKHAWARIZMI-RAP05791.jpg',
+  '/Images/Archive/JAFF20-D7-@ASHRAFALKHAWARIZMI-RAP05792.jpg',
+  '/Images/Archive/JAFF20-D7-@ASHRAFALKHAWARIZMI-RAP05799.jpg',
+  '/Images/Archive/JAFF20-D7-@ASHRAFALKHAWARIZMI-RAP05802.jpg',
+  '/Images/Archive/JAFF20-D7-@ASHRAFALKHAWARIZMI-RAP05808.jpg',
+  '/Images/Archive/JAFF20-D7-@ASHRAFALKHAWARIZMI-RAP05810.jpg',
+  '/Images/Archive/JAFF20-D7-@ASHRAFALKHAWARIZMI-RAP05811.jpg',
+  '/Images/Archive/JAFF20-D8-@ASHRAFALKHAWARIZMI-RAP06389.jpg',
+  '/Images/Archive/JAFF20-D8-@ASHRAFALKHAWARIZMI-RAP06400.jpg',
+  '/Images/Archive/JAFF20-D8-@ASHRAFALKHAWARIZMI-RAP06405.jpg',
+  '/Images/Archive/JAFF20-D8-@ASHRAFALKHAWARIZMI-RAP06426.jpg',
+  '/Images/Archive/JAFF20-D8-@ASHRAFALKHAWARIZMI-RAP06432.jpg',
+  '/Images/Archive/JAFF20-D8-@ASHRAFALKHAWARIZMI-RAP06435.jpg',
+  '/Images/Archive/c2d0e749-f488-4909-b804-cea2cbf6a09a.jpeg',
+  '/Images/Archive/poster 2 DIEM BAO tiếng anh 2.jpeg',
+  '/Images/Archive/poster tiếng việt 2.jpeg',
+]
+
+const landingArchiveSlides = archive.slice(-5)
+
+const practiceImages = [
+  'https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=600&q=80',
+  'https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?auto=format&fit=crop&w=600&q=80',
+  'https://images.unsplash.com/photo-1516280440614-37939bbacd81?auto=format&fit=crop&w=600&q=80',
+  'https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?auto=format&fit=crop&w=600&q=80',
+]
+
+function SiteHeader({ isDetailPage = false }) {
+  return (
+    <header className={`hero ${isDetailPage ? 'hero-detail' : ''}`} id="top">
+      <div className="hero-name">
+        <Link to="/">Hồ Thanh Thảo</Link>
+        <em>Filmmaker</em>
+      </div>
+
+      <nav>
+        <NavLink to="/">Giới thiệu</NavLink>
+        <NavLink to="/films">Phim</NavLink>
+        <NavLink to="/stories">Câu chuyện</NavLink>
+        <NavLink to="/practice">Tập tành</NavLink>
+        <NavLink to="/archive">Archive</NavLink>
+        <NavLink to="/support" className="nav-support">Đồng hành</NavLink>
+      </nav>
+
+      {!isDetailPage && (
+        <div className="hero-quote">
+          <p className="tagline">Những gì là thật,<br />sẽ vang vọng.</p>
+          <small>STILL FROM ĐIỀM BÁO (OMEN), 2025</small>
+        </div>
+      )}
+    </header>
+  )
+}
+
+function FilmDetailPage() {
+  const { filmSlug } = useParams()
+  const film = films.find((item) => item.slug === filmSlug)
+
+  if (!film) {
+    return (
+      <main className="page-shell">
+        <section className="page-section">
+          <h2>Không tìm thấy phim</h2>
+          <Link to="/" className="back-link">← Quay lại</Link>
+        </section>
+      </main>
+    )
+  }
+
+  return (
+    <main className="page-shell">
+      <section className="page-section film-detail-shell">
+        <Link to="/" className="back-link">← Quay lại</Link>
+
+        <div className="film-detail-hero">
+          <img src={film.image} alt={film.title} className="film-detail-image" />
+        </div>
+
+        <div className="film-detail">
+          <div className="film-detail-copy">
+            <span className="film-number">{film.number}</span>
+            <h2>{film.title}</h2>
+            <strong>{film.details}</strong>
+            <p>{film.description}</p>
+
+            {film.awards ? (
+              <div className="film-awards film-awards-detail">
+                {film.awards.split('\n').map((award, index) => (
+                  <span key={`${award}-${index}`}>{award}</span>
+                ))}
+              </div>
+            ) : null}
+          </div>
+        </div>
+      </section>
+    </main>
+  )
+}
+
+function ArchiveGallery({ items = archive, compact = false, onSelect }) {
+  return (
+    <div className={`archive-list ${compact ? 'archive-list-compact' : 'page-archive-list'}`}>
+      {items.map((item, index) => {
+        const image = typeof item === 'string' ? item : item.image
+        const title = typeof item === 'string' ? `Archive image ${index + 1}` : item.title
+
+        return (
+          <button
+            type="button"
+            className={`archive-item ${compact ? 'archive-item-compact' : ''}`}
+            key={`${title}-${index}`}
+            onClick={() => onSelect?.({ title, image })}
+            aria-label={`Xem ảnh ${title}`}
+          >
+            <img className="archive-thumb" src={image} alt={title} />
+          </button>
+        )
+      })}
+    </div>
+  )
+}
+
+function HomePage({ onOpenArchiveImage }) {
+  const [archiveSlideIndex, setArchiveSlideIndex] = useState(0)
+
+  useEffect(() => {
+    const timer = window.setInterval(() => {
+      setArchiveSlideIndex((current) => (current + 1) % landingArchiveSlides.length)
+    }, 2600)
+
+    return () => window.clearInterval(timer)
+  }, [])
+
+  const currentArchiveImage = landingArchiveSlides[archiveSlideIndex]
+
+  return (
+    <>
+      <main>
+        <section className="films" id="films" aria-label="Filmography">
+          {films.map((film, index) => (
+            <article className={`film-row ${index === 0 ? 'film-featured' : ''}`} key={film.number}>
+              <div className="film-copy">
+                <span className="film-number">{film.number}</span>
+                <h2><Link to={`/films/${film.slug}`}>{film.title}</Link></h2>
+                <strong>{film.details}</strong>
+                <p>{film.description}</p>
+              </div>
+
+              <Link to={`/films/${film.slug}`} className="film-image-link">
+                <img
+                  src={film.image}
+                  alt={film.title}
+                  className={film.title === 'Đường Cao Tốc' ? 'film-image-no-frame' : ''}
+                />
+              </Link>
+
+              <p className="film-awards">
+                {film.awards.split('\n').map((award, index) => (
+                  <span key={`${award}-${index}`}>{award}</span>
+                ))}
+              </p>
+            </article>
+          ))}
+        </section>
+
+        <section className="three-columns" id="about">
+          <div id="stories">
+            <h2>Câu chuyện</h2>
+            {stories.map(([title, year]) => (
+              <Link className="text-link" to="/stories" key={title}>
+                <span>{title}</span><small>{year}</small>
+              </Link>
+            ))}
+            <Link className="more" to="/stories">Xem tất cả →</Link>
+          </div>
+
+          <div id="archive">
+            <h2>Archive</h2>
+            <div className="landing-archive-showcase">
+              <button
+                type="button"
+                className="landing-archive-slide"
+                onClick={() => onOpenArchiveImage({ title: 'Archive', image: currentArchiveImage })}
+                aria-label="Xem ảnh archive lớn hơn"
+              >
+                <img src={currentArchiveImage} alt="Archive" />
+              </button>
+              <div className="archive-slider-dots" aria-label="Archive slideshow indicators">
+                {landingArchiveSlides.map((_, index) => (
+                  <span
+                    key={index}
+                    className={index === archiveSlideIndex ? 'active' : ''}
+                  />
+                ))}
+              </div>
+            </div>
+            <Link className="more" to="/archive">Xem tất cả →</Link>
+          </div>
+
+          <div id="practice">
+            <h2>Tập tành</h2>
+            <div className="practice-grid">
+              {practiceImages.map((image, index) => (
+                <img key={index} src={image} alt="" />
+              ))}
+            </div>
+            <Link className="more" to="/practice">Xem tất cả →</Link>
+          </div>
+        </section>
+
+        <section className="support" id="support">
+          <div className="support-intro">
+            <h2>Đồng hành cùng dự án</h2>
+            <p>
+              Dự án đang trong quá trình phát triển. Nếu bạn muốn đồng hành cùng
+              những bộ phim tiếp theo, hãy hỗ trợ bằng một cách nhỏ dưới đây.
+            </p>
+          </div>
+
+          <div className="payment payment-qr">
+            <img src="/Images/VCB.JPG" alt="QR Vietcombank" className="qr-image" />
+          </div>
+
+          <div className="payment">
+            <strong>Chuyển khoản trong nước</strong>
+            <p>Chủ tài khoản: HO THANH THAO</p>
+            <p>Số tài khoản: 001100429077</p>
+            <p>Ngân hàng: Vietcombank</p>
+            <p>SWIFT: BFTVVNVX</p>
+          </div>
+
+          <div className="payment">
+            <strong>Hỗ trợ khác</strong>
+            <p>Liên hệ để trao đổi phương thức hỗ trợ phù hợp.</p>
+          </div>
+        </section>
+      </main>
+    </>
+  )
+}
+
+function FilmsPage() {
+  return (
+    <main className="page-shell">
+      <section className="page-section">
+        <h2>Phim</h2>
+        <div className="page-list">
+          {films.map((film) => (
+            <article className="page-card film-page-card" key={film.number}>
+              <img src={film.image} alt={film.title} className="page-card-image" />
+              <div>
+                <span className="film-number">{film.number}</span>
+                <h3>{film.title}</h3>
+                <strong>{film.details}</strong>
+                <p>{film.description}</p>
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+    </main>
+  )
+}
+
+function StoriesPage() {
+  return (
+    <main className="page-shell">
+      <section className="page-section">
+        <h2>Câu chuyện</h2>
+        <div className="story-list page-story-list">
+          {stories.map(([title, year]) => (
+            <Link className="text-link story-page-item" to="/" key={title}>
+              <span>{title}</span>
+              <small>{year}</small>
+            </Link>
+          ))}
+        </div>
+      </section>
+    </main>
+  )
+}
+
+function PracticePage() {
+  return (
+    <main className="page-shell">
+      <section className="page-section">
+        <h2>Tập tành</h2>
+        <div className="practice-grid page-practice-grid">
+          {practiceImages.map((image, index) => (
+            <img key={index} src={image} alt="" />
+          ))}
+        </div>
+      </section>
+    </main>
+  )
+}
+
+function ArchivePage({ onOpenArchiveImage }) {
+  return (
+    <main className="page-shell">
+      <section className="page-section">
+        <h2>Archive</h2>
+        <ArchiveGallery items={archive} onSelect={onOpenArchiveImage} />
+      </section>
+    </main>
+  )
+}
+
+function SupportPage() {
+  return (
+    <main className="page-shell">
+      <section className="page-section support-page">
+        <h2>Đồng hành cùng dự án</h2>
+        <div className="support-grid-page">
+          <div className="payment payment-qr">
+            <img src="/Images/VCB.JPG" alt="QR Vietcombank" className="qr-image" />
+          </div>
+
+          <div className="payment">
+            <strong>Chuyển khoản trong nước</strong>
+            <p>Chủ tài khoản: HO THANH THAO</p>
+            <p>Số tài khoản: 001100429077</p>
+            <p>Ngân hàng: Vietcombank</p>
+            <p>SWIFT: BFTVVNVX</p>
+          </div>
+
+          <div className="payment">
+            <strong>Hỗ trợ khác</strong>
+            <p>Liên hệ để trao đổi phương thức hỗ trợ phù hợp.</p>
+          </div>
+        </div>
+      </section>
+    </main>
+  )
+}
+
+function App() {
+  const location = useLocation()
+  const [selectedArchiveImage, setSelectedArchiveImage] = useState(null)
+  const isDetailPage = location.pathname.startsWith('/films/') || location.pathname === '/archive'
+
+  return (
+    <>
+      <SiteHeader isDetailPage={isDetailPage} />
+      <Routes>
+        <Route path="/" element={<HomePage onOpenArchiveImage={setSelectedArchiveImage} />} />
+        <Route path="/films/:filmSlug" element={<FilmDetailPage />} />
+        <Route path="/stories" element={<StoriesPage />} />
+        <Route path="/practice" element={<PracticePage />} />
+        <Route path="/archive" element={<ArchivePage onOpenArchiveImage={setSelectedArchiveImage} />} />
+        <Route path="/support" element={<SupportPage />} />
+      </Routes>
+
+      {selectedArchiveImage && (
+        <div className="archive-lightbox" onClick={() => setSelectedArchiveImage(null)} role="dialog" aria-modal="true">
+          <div className="archive-lightbox-panel" onClick={(event) => event.stopPropagation()}>
+            <button
+              type="button"
+              className="archive-lightbox-close"
+              onClick={() => setSelectedArchiveImage(null)}
+              aria-label="Đóng ảnh"
+            >
+              ×
+            </button>
+            <img src={selectedArchiveImage.image} alt={selectedArchiveImage.title} />
+          </div>
+        </div>
+      )}
+
+      <footer>
+        <span>© 2025 Hồ Thanh Thảo</span>
+        <span>Instagram　 Facebook　 Email</span>
+      </footer>
+    </>
+  )
+}
+
+export default App
