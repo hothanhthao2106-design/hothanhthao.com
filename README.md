@@ -1,2 +1,0 @@
-# hothanhthao.com
-personal website
