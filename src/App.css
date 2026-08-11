@@ -1,0 +1,77 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title></title>
+  <meta name="Generator" content="Cocoa HTML Writer">
+  <meta name="CocoaVersion" content="2487.7">
+  <style type="text/css">
+    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica}
+    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; min-height: 14.0px}
+  </style>
+</head>
+<body>
+<p class="p1">@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&amp;family=Plus+Jakarta+Sans:wght@300;400;500;600&amp;display=swap');</p>
+<p class="p2"><br></p>
+<p class="p1">* { box-sizing: border-box; margin: 0; padding: 0; }</p>
+<p class="p1">html { scroll-behavior: smooth; }</p>
+<p class="p1">body { background-color: #ffffff; color: #111111; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 11.5px; line-height: 1.6; }</p>
+<p class="p2"><br></p>
+<p class="p1">.hero-section { position: relative; width: 100%; height: 85vh; min-height: 500px; background-size: cover; background-position: center; color: #fff; padding: 40px 6%; display: flex; flex-direction: column; justify-content: space-between; }</p>
+<p class="p1">.hero-overlay { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.65) 100%); z-index: 1; }</p>
+<p class="p1">.hero-header, .hero-content { position: relative; z-index: 2; }</p>
+<p class="p1">.hero-header { display: flex; justify-content: space-between; align-items: flex-start; }</p>
+<p class="p2"><br></p>
+<p class="p1">.brand-name { font-family: 'Playfair Display', serif; font-size: 26px; font-weight: 500; }</p>
+<p class="p1">.brand-sub { font-size: 13px; font-style: italic; opacity: 0.85; margin-top: 2px; }</p>
+<p class="p1">.hero-nav { display: flex; flex-direction: column; gap: 12px; text-align: right; }</p>
+<p class="p1">.hero-nav a { color: #ffffff; text-decoration: none; font-size: 14px; font-weight: 500; opacity: 0.9; transition: all 0.2s; }</p>
+<p class="p1">.hero-nav a:hover { opacity: 1; color: #d9381e; }</p>
+<p class="p1">.hero-nav a.highlight-red { color: #d9381e; font-weight: 600; }</p>
+<p class="p2"><br></p>
+<p class="p1">.hero-tagline { font-family: 'Playfair Display', serif; font-size: 42px; font-weight: 400; line-height: 1.2; white-space: pre-line; max-width: 600px; margin-bottom: 12px; }</p>
+<p class="p1">.hero-still-note { font-size: 10px; letter-spacing: 0.1em; opacity: 0.7; text-transform: uppercase; }</p>
+<p class="p2"><br></p>
+<p class="p1">.films-section { max-width: 1050px; margin: 50px auto; padding: 0 4%; }</p>
+<p class="p1">.film-item { display: grid; grid-template-columns: 280px 1fr; gap: 40px; padding: 35px 0; border-bottom: 1px solid #eee; align-items: center; }</p>
+<p class="p1">.film-num { color: #d9381e; font-size: 11px; font-weight: 600; margin-bottom: 6px; }</p>
+<p class="p1">.film-title-link { text-decoration: none; color: inherit; display: inline-block; }</p>
+<p class="p1">.film-title-link:hover .film-title { color: #d9381e; }</p>
+<p class="p1">.film-title { font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 500; }</p>
+<p class="p1">.film-title span { font-style: italic; font-size: 18px; color: #555; }</p>
+<p class="p1">.film-status { color: #d9381e; font-size: 10px; font-weight: 700; letter-spacing: 0.08em; margin-top: 4px; margin-bottom: 4px; }</p>
+<p class="p1">.film-meta { font-size: 10.5px; color: #666; margin-bottom: 10px; }</p>
+<p class="p1">.film-desc { font-size: 11px; color: #333; line-height: 1.6; }</p>
+<p class="p2"><br></p>
+<p class="p1">.film-img-anchor { display: block; overflow: hidden; border-radius: 2px; text-decoration: none; }</p>
+<p class="p1">.film-img-anchor img { width: 100%; display: block; object-fit: cover; transition: transform 0.4s ease; }</p>
+<p class="p1">.film-img-anchor:hover img { transform: scale(1.02); }</p>
+<p class="p1">.film-img-anchor.featured-img img { height: 320px; }</p>
+<p class="p1">.film-img-anchor.standard-img img { height: 180px; }</p>
+<p class="p2"><br></p>
+<p class="p1">.bottom-grid { max-width: 1050px; margin: 0 auto 50px; padding: 0 4%; display: grid; grid-template-columns: 1fr 1.1fr 1fr; gap: 35px; }</p>
+<p class="p1">.sec-title { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 16px; color: #111; }</p>
+<p class="p1">.sec-title.red-title { color: #d9381e; }</p>
+<p class="p2"><br></p>
+<p class="p1">.list-row-link { display: flex; justify-content: space-between; padding: 9px 0; border-bottom: 1px solid #eee; font-size: 11px; text-decoration: none; color: #222; transition: color 0.2s; }</p>
+<p class="p1">.list-row-link:hover { color: #d9381e; }</p>
+<p class="p1">.list-row-link .year { color: #888; }</p>
+<p class="p2"><br></p>
+<p class="p1">.gallery-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; }</p>
+<p class="p1">.gallery-grid img { width: 100%; height: 65px; object-fit: cover; transition: opacity 0.2s; }</p>
+<p class="p1">.gallery-grid a:hover img { opacity: 0.8; }</p>
+<p class="p2"><br></p>
+<p class="p1">.support-section { max-width: 1050px; margin: 0 auto 40px; padding: 35px 4%; border-top: 1px solid #eee; display: grid; grid-template-columns: 1fr 1.3fr; gap: 40px; align-items: start; }</p>
+<p class="p1">.support-methods { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; background: #fafafa; padding: 20px; border-radius: 4px; border: 1px solid #f0f0f0; }</p>
+<p class="p1">.qr-box { display: flex; gap: 12px; align-items: center; }</p>
+<p class="p1">.qr-code { width: 75px; height: 75px; }</p>
+<p class="p1">.wise-box { border-left: 1px solid #e5e5e5; padding-left: 20px; display: flex; flex-direction: column; justify-content: center; }</p>
+<p class="p1">.wise-link { display: inline-block; margin-top: 8px; color: #d9381e; font-weight: 600; text-decoration: none; font-size: 11px; }</p>
+<p class="p1">.wise-link:hover { text-decoration: underline; }</p>
+<p class="p2"><br></p>
+<p class="p1">footer { max-width: 1050px; margin: 0 auto; padding: 25px 4%; border-top: 1px solid #eee; display: flex; justify-content: space-between; color: #777; font-size: 10.5px; }</p>
+<p class="p1">footer a { color: #777; text-decoration: none; margin-left: 12px; }</p>
+<p class="p1">footer a:hover { color: #d9381e; }</p>
+</body>
+</html>
