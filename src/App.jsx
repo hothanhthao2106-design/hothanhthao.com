@@ -384,7 +384,7 @@ function SupportPage() {
           <div className="payment">
             <strong>Chuyển khoản trong nước</strong>
             <p>Chủ tài khoản: HO THANH THAO</p>
-            <p>Số tài khoản: 001100429077</p>
+            <p>Số tài khoản: 0011004290779</p>
             <p>Ngân hàng: Vietcombank</p>
             <p>SWIFT: BFTVVNVX</p>
           </div>
