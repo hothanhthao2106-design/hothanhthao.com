@@ -36,7 +36,7 @@ const films = [
     title: 'Muộn',
     details: '2017 · Phim ngắn · Drama',
     description:
-      'Trong một buổi nhậu đêm khuya, một cô gái trẻ bắt ngờ trở nên thân mật với một tay giang hồ.',
+      'Trong một buổi nhậu đêm khuya, một cô gái trẻ bất ngờ trở nên thân mật với một tay giang hồ knguy hiểm ngay trước mắt người bạn trai bất lực của mình, khiến mối quan hệ giữa ba người dần trượt vào một đêm đầy căng thẳng và khó lường.',
     image: '/Images/Ephemera.png',
     awards: 'Giải Búp Sen Vàng\nLựa chọn chính thức · Singapore International Film Festival\nTrình chiếu tại: Liên hoan phim Tài liệu & Ngắn Quốc tế Kerala; 7th NABIFIMEX (Philippines); SeaShorts International Film Festival (Malaysia); Stadtlichter International Film Festival (Đức); Vietnamese Showcase tại Griffith Film School (Úc)',
   },
