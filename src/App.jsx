@@ -16,8 +16,7 @@ const films = [
     slug: 'diem-bao',
     title: 'Điềm Báo',
     details: '2025 · Phim ngắn · Drama',
-    description:
-      'Tin lời lời khẳng định của thầy bói rằng những giấc mơ nhục cảm về một người đàn ông xa lạ là căn nguyên cho chuỗi vận rủi của con trai mình, một góa phụ tuyệt vọng tìm mọi cách chống lại những giấc mơ ấy, giữa ranh giới mong manh của mê tín, dục vọng và tội lỗi.',
+    description: 'Cho rằng những giấc mơ nhục cảm về người đàn ông xa lạ chính là nguồn cơn đem lại vận rủi cho con trai như lời thầy bói phán, một góa phụ tuyệt vọng lao vào cuộc chiến chống lại ham muốn của bản thân, đứng trước ranh giới mong manh của mê tín, dục vọng và tội lỗi',
     image: '/Images/Omen4.png',
     awards: 'Lựa chọn chính thức · SSFF & ASIA\nLựa chọn chính thức · Jogja-NETPAC\nLựa chọn chính thức · Bengaluru International Film Festival',
   },
