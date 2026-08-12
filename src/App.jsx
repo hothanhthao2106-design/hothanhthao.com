@@ -6,8 +6,8 @@ const films = [
     number: '01',
     slug: 'mot-tam-hinh-thi-thuc',
     title: 'Một tấm hình thị thực',
-    details: 'Đang phát triển · Phim ngắn',
-    description: 'Tìm kiếm đối tác tài trợ và sản xuất.',
+    details: 'Đang phát triển · Phim ngắn · Tìm kiếm đối tác tài trợ và sản xuất.',
+    description: 'Một người phụ nữ nông thôn cùng hai đứa con đến thành phố để chụp lại ảnh visa. Tin rằng tấm ảnh là nguyên nhân khiến hồ sơ trước bị từ chối, cô cố kiểm soát tối đa diện mạo của mình, trong khi thế giới xung quanh ngày một trở nên mong manh và bất định.',
     image: '/Images/Avisaphoto.jpg',
     awards: '',
   },
@@ -17,7 +17,7 @@ const films = [
     title: 'Điềm Báo',
     details: '2025 · Phim ngắn · Drama',
     description:
-      'Sau một khoảnh khắc thay đổi, nhân vật chính nhìn thấy những giấc mơ nhức nhối về một người đàn ông xa lạ.',
+      'Tin lời lời khẳng định của thầy bói rằng những giấc mơ nhục cảm về một người đàn ông xa lạ là căn nguyên cho chuỗi vận rủi của con trai mình, một góa phụ tuyệt vọng tìm mọi cách chống lại những giấc mơ ấy, giữa ranh giới mong manh của mê tín, dục vọng và tội lỗi.',
     image: '/Images/Omen4.png',
     awards: 'Lựa chọn chính thức · SSFF & ASIA\nLựa chọn chính thức · Jogja-NETPAC\nLựa chọn chính thức · Bengaluru International Film Festival',
   },
@@ -27,7 +27,7 @@ const films = [
     title: 'Đường Cao Tốc',
     details: '2020 · Phim ngắn · Drama',
     description:
-      'Sau nhiều tháng không nhận được lương, một người trẻ bắt đầu tìm kiếm khách hàng ngay trong bối cảnh công việc.',
+      'Sau nhiều tháng không nhận được lương, một nhân viên tín dụng trẻ, thiếu kinh nghiệm buộc phải liều mình tìm kiếm khách hàng ngay trong địa bàn do các băng nhóm tín dụng đen kiểm soát.ệc.',
     image: '/Images/DCT.png',
     awards: 'Giải Cánh Diều Bạc\nDanh sách rút gọn · Quinzaine des Réalisateurs',
   },
@@ -39,7 +39,7 @@ const films = [
     description:
       'Trong một buổi nhậu đêm khuya, một cô gái trẻ bắt ngờ trở nên thân mật với một tay giang hồ.',
     image: '/Images/Ephemera.png',
-    awards: 'Giải Búp Sen Vàng\nLựa chọn chính thức · Singapore International Film Festival',
+    awards: 'Giải Búp Sen Vàng\nLựa chọn chính thức · Singapore International Film Festival\nTrình chiếu tại: Liên hoan phim Tài liệu & Ngắn Quốc tế Kerala; 7th NABIFIMEX (Philippines); SeaShorts International Film Festival (Malaysia); Stadtlichter International Film Festival (Đức); Vietnamese Showcase tại Griffith Film School (Úc)',
   },
 ]
 
@@ -54,6 +54,7 @@ const stories = [
 const archive = [
   '/Images/Archive/274056339_2997416303922233_7582249236786053186_n.jpeg',
   '/Images/Archive/29514_112549345452505_2308406_n.jpeg',
+  '/Images/Archive/Onset_culaocham.jpg',
   '/Images/Archive/44528254_2684287341612013_5180671027964805120_n.jpeg',
   '/Images/Archive/5511bbca4de919f0d685d721a9c34c84.JPG',
   '/Images/Archive/5713310c1f628273d8b7bc52b6fce612.JPEG',
@@ -71,8 +72,6 @@ const archive = [
   '/Images/Archive/JAFF20-D7-@ASHRAFALKHAWARIZMI-RAP05799.jpg',
   '/Images/Archive/JAFF20-D7-@ASHRAFALKHAWARIZMI-RAP05802.jpg',
   '/Images/Archive/JAFF20-D7-@ASHRAFALKHAWARIZMI-RAP05808.jpg',
-  '/Images/Archive/JAFF20-D7-@ASHRAFALKHAWARIZMI-RAP05810.jpg',
-  '/Images/Archive/JAFF20-D7-@ASHRAFALKHAWARIZMI-RAP05811.jpg',
   '/Images/Archive/JAFF20-D8-@ASHRAFALKHAWARIZMI-RAP06389.jpg',
   '/Images/Archive/JAFF20-D8-@ASHRAFALKHAWARIZMI-RAP06400.jpg',
   '/Images/Archive/JAFF20-D8-@ASHRAFALKHAWARIZMI-RAP06405.jpg',
@@ -81,7 +80,6 @@ const archive = [
   '/Images/Archive/JAFF20-D8-@ASHRAFALKHAWARIZMI-RAP06435.jpg',
   '/Images/Archive/c2d0e749-f488-4909-b804-cea2cbf6a09a.jpeg',
   '/Images/Archive/poster 2 DIEM BAO tiếng anh 2.jpeg',
-  '/Images/Archive/poster tiếng việt 2.jpeg',
 ]
 
 const landingArchiveSlides = archive.slice(-5)
@@ -112,7 +110,7 @@ function SiteHeader({ isDetailPage = false }) {
 
       {!isDetailPage && (
         <div className="hero-quote">
-          <p className="tagline">Những gì là thật,<br />sẽ vang vọng.</p>
+          <p className="tagline">What is true,<br />echoes.</p>
           <small>STILL FROM ĐIỀM BÁO (OMEN), 2025</small>
         </div>
       )}
