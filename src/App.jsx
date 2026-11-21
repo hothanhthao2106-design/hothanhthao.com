@@ -433,7 +433,7 @@ function App() {
       )}
 
       <footer>
-        <span>© 2025 Hồ Thanh Thảo</span>
+        <span>© 2026 Hồ Thanh Thảo</span>
         <span>Instagram　 Facebook　 Email</span>
       </footer>
     </>
