@@ -205,7 +205,7 @@ function IntroSection() {
         <p>
           Sinh ra tại Hà Nội, Việt Nam, Hồ Thanh Thảo tìm thấy điểm khởi đầu cho
           những bộ phim của mình trong đời sống thường nhật của người dân miền
-          Bắc Việt Nam. Cô quan tâm đến những cảm xúc và suy nghĩ ít khi được gọi
+          Bắc. Cô quan tâm đến những cảm xúc và suy nghĩ ít khi được gọi
           tên — âm thầm nhưng dai dẳng trong đời sống thường nhật. Thảo thường
           tìm đến những khoảnh khắc thỏa hiệp, nơi bản năng bị đè nén và sự hồn
           nhiên dần phai nhạt.
@@ -271,7 +271,7 @@ function HomePage({ onOpenArchiveImage }) {
 
         <section className="three-columns">
           <div id="stories">
-            <h2>Câu chuyện</h2>
+            <h2>Stories</h2>
             {stories.map(([title, year]) => (
               <Link className="text-link" to="/stories" key={title}>
                 <span>{title}</span><small>{year}</small>

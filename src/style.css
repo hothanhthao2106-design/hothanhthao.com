@@ -90,7 +90,7 @@ nav {
   transform: none;
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
+  align-items: center;
   gap: 10px;
   width: auto;
   max-width: 120px;
@@ -113,6 +113,8 @@ nav {
   align-items: flex-end;
 }
 nav a {
+  width: 100%;
+  text-align: center;
   position: relative;
   color: #ffffff;
   line-height: 1.35;
@@ -450,6 +452,16 @@ main {
   font-size: 20px;
   text-transform: uppercase;
 }
+#stories {
+ text-align: center;
+}
+#stories .text-link {
+ max-width: 640px;
+ margin: 0 auto;
+}
+#stories .more {
+ display: inline-block;
+}
 .text-link {
   display: flex;
   justify-content: space-between;
@@ -706,7 +718,7 @@ footer {
     left: auto;
     right: 12px;
     transform: none;
-    align-items: flex-end;
+    align-items: center;
     gap: 7px;
     width: 82px;
     max-width: 82px;
@@ -720,7 +732,7 @@ footer {
   }
   nav a {
     width: 100%;
-    text-align: right;
+    text-align: center;
     white-space: nowrap;
   }
   #about, #films, #stories, #practice, #archive, #donate {
