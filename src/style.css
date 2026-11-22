@@ -168,6 +168,7 @@ main {
  position: relative;
  z-index: 20;
  background: #f8f6f2;
+ padding-right: clamp(150px, 12vw, 170px);
 }
 
 .intro-section {
@@ -704,7 +705,7 @@ main {
 footer {
   display: flex;
   justify-content: space-between;
-  padding: 18px 4vw;
+  padding: 18px clamp(150px, 12vw, 170px) 18px 4vw;
   border-top: 1px solid #dedbd5;
   color: #777;
   font-size: 11px;
@@ -775,7 +776,11 @@ footer {
     gap: 24px;
   }
   .support-intro { grid-column: 1 / -1; }
-  footer { display: block; }
+  main { padding-right: 96px; }
+  footer {
+    display: block;
+    padding-right: 96px;
+  }
   footer span { display: block; margin-bottom: 8px; }
 }
 
