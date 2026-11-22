@@ -3,13 +3,21 @@
 :root {
   font-family: Arial, sans-serif;
   color: #101010;
-  background: #f8f6f2;
+  background: #F3F0E9;
   line-height: 1.45;
 }
 
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
-body { margin: 0; background: #f8f6f2; }
+body {
+  margin: 0;
+  background-color: #F3F0E9;
+  background-image:
+    radial-gradient(rgba(70, 58, 38, 0.028) 0.55px, transparent 0.75px),
+    radial-gradient(rgba(255, 255, 255, 0.18) 0.55px, transparent 0.75px);
+  background-size: 13px 15px, 17px 19px;
+  background-position: 0 0, 6px 8px;
+}
 
 #about, #films, #stories, #practice, #archive, #donate {
   scroll-margin-top: 72px;
@@ -43,7 +51,7 @@ h1, h2 {
   max-height: none;
   position: relative;
   z-index: 10;
-  background: #f8f6f2;
+  background: #F3F0E9;
   color: #101010;
   border-bottom: 1px solid #dedbd5;
 }
@@ -91,16 +99,16 @@ nav {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 10px;
+  gap: 9px;
   width: auto;
-  max-width: 120px;
-  padding: 10px 12px;
+  max-width: 112px;
+  padding: 9px 10px;
   background:
-    linear-gradient(rgba(18, 18, 18, 0.72), rgba(18, 18, 18, 0.72)),
+    linear-gradient(rgba(31, 30, 27, 0.58), rgba(31, 30, 27, 0.58)),
     url("/Images/Omen.png") right 28% / 240px 300px no-repeat;
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  border-radius: 8px;
-  box-shadow: 0 4px 18px rgba(17, 17, 17, 0.18);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 7px;
+  box-shadow: 0 3px 14px rgba(17, 17, 17, 0.12);
   backdrop-filter: blur(8px) saturate(80%);
   -webkit-backdrop-filter: blur(8px) saturate(80%);
   overflow: visible;
@@ -121,11 +129,15 @@ nav a {
   text-shadow: 0 1px 3px rgba(0, 0, 0, 0.75);
   transition: color 0.2s ease, transform 0.2s ease;
 }
-nav a:hover { color: #db2727; }
+nav a:hover { color: #e1d6c4; }
+nav a:focus-visible {
+  outline: 1px solid rgba(255, 255, 255, 0.9);
+  outline-offset: 4px;
+}
 nav a.active {
-  color: #cf2428;
+  color: #f1e7d7;
   font-weight: 700;
-  transform: translateX(-4px);
+  transform: translateX(-2px);
 }
 nav a.active::after {
   content: '';
@@ -167,14 +179,14 @@ nav a.active::after {
 main {
  position: relative;
  z-index: 20;
- background: #f8f6f2;
+ background: transparent;
  padding-right: clamp(150px, 12vw, 170px);
 }
 
 .intro-section {
  position: relative;
  z-index: 20;
- background: #f8f6f2;
+ background: transparent;
  display: grid;
  grid-template-columns: minmax(180px, .65fr) minmax(0, 1.35fr);
   align-items: center;
@@ -202,13 +214,13 @@ main {
 .films {
  position: relative;
  z-index: 20;
- background: #f8f6f2;
+ background: transparent;
  padding: 0 4vw;
 }
 .film-row {
   display: grid;
-  grid-template-columns: 25% 1fr 24%;
-  gap: 20px;
+  grid-template-columns: 24% 1.45fr 23%;
+  gap: clamp(24px, 2.4vw, 38px);
   min-height: 285px;
   padding: 26px 0 16px;
   border-bottom: 1px solid #dedbd5;
@@ -216,7 +228,7 @@ main {
 .film-row:first-child { padding-top: 24px; }
 
 .film-featured {
-  grid-template-columns: 24% 1.55fr 24%;
+  grid-template-columns: 24% 1.45fr 23%;
   padding-top: 28px;
   padding-bottom: 28px;
   border-top: 1px solid #dedbd5;
@@ -295,13 +307,13 @@ main {
   display: block;
   margin-bottom: 14px;
   color: #cf2428;
-  font: 500 11px "Montserrat", Arial, sans-serif;
+  font: 500 12px "Montserrat", Arial, sans-serif;
   text-transform: none;
 }
 .film-copy p {
-  max-width: 275px;
-  font-size: 12px;
-  line-height: 1.55;
+  max-width: 310px;
+  font-size: 13.5px;
+  line-height: 1.7;
 }
 .film-row > img {
   width: 100%;
@@ -310,8 +322,15 @@ main {
   object-fit: contain;
   border: none;
   background: transparent;
-  filter: saturate(.8);
-  opacity: 0.92;
+  filter: saturate(.88);
+  opacity: 0.96;
+  transition: transform 350ms ease, opacity 350ms ease, filter 350ms ease;
+}
+.film-row:hover > img,
+.film-image-link:hover img {
+  transform: scale(1.012);
+  opacity: 1;
+  filter: saturate(1);
 }
 
 .film-row:not(.film-featured) .film-image-link {
@@ -404,7 +423,8 @@ main {
   display: block;
   margin-bottom: 14px;
   color: #cf2428;
-  font: 500 11px "Montserrat", Arial, sans-serif;
+  font: 500 12px "Montserrat", Arial, sans-serif;
+  line-height: 1.65;
   text-transform: none;
 }
 
@@ -420,8 +440,8 @@ main {
   margin: 0;
   padding: 0 8px;
   font-family: "Montserrat", Arial, sans-serif;
-  font-size: 12px;
-  line-height: 1.5;
+  font-size: 12.5px;
+  line-height: 1.65;
   white-space: pre-line;
 }
 .film-awards span {
@@ -433,7 +453,7 @@ main {
 .three-columns {
  position: relative;
  z-index: 20;
- background: #f8f6f2;
+ background: transparent;
  display: grid;
  grid-template-columns: 1fr;
   margin: 0 4vw;
@@ -469,7 +489,9 @@ main {
   gap: 12px;
   padding: 7px 0;
   border-bottom: 1px solid #e5e2dd;
-  font-size: 12px;
+  font-size: 13px;
+  line-height: 1.6;
+  transition: color 300ms ease, opacity 300ms ease;
 }
 .text-link:hover, .more:hover { color: #cf2428; }
 .text-link small { color: #777; font-size: 10px; }
@@ -659,7 +681,7 @@ main {
 .support {
  position: relative;
  z-index: 20;
- background: #f8f6f2;
+ background: transparent;
  display: grid;
   grid-template-columns: 1.35fr 110px 1fr 1fr;
   gap: 28px;
@@ -702,6 +724,39 @@ main {
 }
 .payment b { color: #cf2428; font-size: 18px; }
 
+.film-copy h2 a,
+.more,
+.text-link,
+.landing-archive-slide,
+.practice-grid img {
+  transition: color 300ms ease, opacity 300ms ease, transform 300ms ease;
+}
+.landing-archive-slide img,
+.practice-grid img {
+  transition: transform 350ms ease, opacity 350ms ease, filter 350ms ease;
+}
+.landing-archive-slide:hover img,
+.practice-grid img:hover {
+  transform: scale(1.012);
+  opacity: 0.92;
+}
+.text-link:focus-visible,
+.more:focus-visible,
+.film-copy h2 a:focus-visible,
+.landing-archive-slide:focus-visible {
+  outline: 1px solid #cf2428;
+  outline-offset: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}
+
 footer {
   display: flex;
   justify-content: space-between;
@@ -727,7 +782,7 @@ footer {
     border-radius: 8px;
     overflow: visible;
     background:
-      linear-gradient(rgba(18, 18, 18, 0.78), rgba(18, 18, 18, 0.78)),
+      linear-gradient(rgba(31, 30, 27, 0.62), rgba(31, 30, 27, 0.62)),
       url("/Images/Omen.png") right 35% / 170px 220px no-repeat;
     font-size: 11px;
   }
