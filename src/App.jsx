@@ -10,7 +10,7 @@ const films = [
     description: 'Một người phụ nữ nông thôn cùng hai đứa con đến thành phố để chụp lại ảnh visa. Tin rằng tấm ảnh là nguyên nhân khiến hồ sơ trước bị từ chối, cô cố kiểm soát tối đa diện mạo của mình, trong khi thế giới xung quanh ngày một trở nên mong manh và bất định.',
     image: '/Images/A visa photo/Avisaphoto.jpg',
     images: ['/Images/A visa photo/Avisaphoto.jpg', '/Images/A visa photo/Cover.png'],
-    awards: '',
+    awards: 'Top 5 dự án phát triển tại Short Film Incubator – chương trình do Objectif và Momo Film Co. (Singapore)',
   },
   {
     number: '02',
@@ -411,8 +411,8 @@ function HomePage({ onOpenArchiveImage }) {
           <div className="support-intro">
             <h2>Đồng hành cùng dự án</h2>
             <p>
-              Dự án đang trong quá trình phát triển. Nếu bạn muốn đồng hành cùng
-              những bộ phim tiếp theo, hãy hỗ trợ bằng một cách nhỏ dưới đây.
+              Nếu bạn thích dự án của tôi hoặc thích cách tôi tò mò về cuộc sống, hãy góp một phần nhỏ để tôi có thể tiếp tục kể các câu chuyện và chia sẻ tới bạn.
+
             </p>
           </div>
 
@@ -421,7 +421,7 @@ function HomePage({ onOpenArchiveImage }) {
           </div>
 
           <div className="payment">
-            <strong>Chuyển khoản trong nước</strong>
+            <strong>Donate here</strong>
             <p>Chủ tài khoản: HO THANH THAO</p>
             <p>Số tài khoản: 0011004290779</p>
             <p>Ngân hàng: Vietcombank</p>
