@@ -11,7 +11,7 @@
 html { scroll-behavior: smooth; }
 body { margin: 0; background: #f8f6f2; }
 
-#about, #films, #stories, #practice, #donate {
+#about, #films, #stories, #practice, #archive, #donate {
   scroll-margin-top: 24px;
 }
 a { color: inherit; text-decoration: none; }

@@ -103,6 +103,7 @@ function SiteHeader({ isDetailPage = false }) {
         <Link to="/#films">Films</Link>
         <Link to="/#stories">Stories</Link>
         <Link to="/#practice">Practice</Link>
+        <Link to="/#archive">Archive</Link>
         <Link to="/#donate" className="nav-support">Donate</Link>
       </nav>
 
