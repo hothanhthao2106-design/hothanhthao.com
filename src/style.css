@@ -268,8 +268,8 @@ main {
 }
 .film-row {
   display: grid;
-  grid-template-columns: 24% 1.45fr 23%;
-  gap: clamp(24px, 2.4vw, 38px);
+  grid-template-columns: 22% 1.65fr 21%;
+  gap: clamp(28px, 3vw, 46px);
   min-height: 285px;
   padding: 26px 0 16px;
   border-bottom: 1px solid #dedbd5;
@@ -277,7 +277,7 @@ main {
 .film-row:first-child { padding-top: 24px; }
 
 .film-featured {
-  grid-template-columns: 24% 1.45fr 23%;
+  grid-template-columns: 22% 1.65fr 21%;
   padding-top: 28px;
   padding-bottom: 28px;
   border-top: 1px solid #dedbd5;
@@ -317,13 +317,13 @@ main {
   align-items: center;
   justify-content: center;
   width: 100%;
-  max-width: 68%;
+  max-width: 100%;
   justify-self: center;
 }
 
 .film-row:not(.film-featured) > img {
   width: 100%;
-  max-width: 68%;
+  max-width: 100%;
   height: auto;
   object-fit: contain;
   justify-self: center;
@@ -805,17 +805,46 @@ display: grid;
 .practice-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 16px 12px;
+  gap: 14px;
   align-items: start;
 }
 .practice-grid img {
   display: block;
   width: 100%;
-  max-width: 220px;
-  height: 150px;
-  margin: 0 auto;
+  height: clamp(210px, 24vw, 330px);
+  margin: 0;
   object-fit: cover;
-  aspect-ratio: auto;
+  aspect-ratio: 16 / 10;
+}
+.practice-crossfade {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  background: #ece8df;
+}
+.practice-crossfade-image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.practice-crossfade-active {
+  z-index: 2;
+  animation: practiceCrossfadeIn 900ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+.practice-crossfade-outgoing {
+  z-index: 1;
+  animation: practiceCrossfadeOut 900ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+@keyframes practiceCrossfadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes practiceCrossfadeOut {
+  from { opacity: 1; }
+  to { opacity: 0; }
 }
 
 .support {

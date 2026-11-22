@@ -270,6 +270,42 @@ function FilmCrossfade({ film, className = '' }) {
   )
 }
 
+function PracticeCrossfade({ images, slot }) {
+  const [activeIndex, setActiveIndex] = useState(slot)
+  const [previousIndex, setPreviousIndex] = useState(slot)
+
+  useEffect(() => {
+    if (images.length < 2) return
+    const timer = window.setInterval(() => {
+      setActiveIndex((current) => {
+        setPreviousIndex(current)
+        return (current + 1) % images.length
+      })
+    }, 3600 + slot * 600)
+    return () => window.clearInterval(timer)
+  }, [images.length, slot])
+
+  return (
+    <div className="practice-crossfade">
+      {previousIndex !== activeIndex && (
+        <img
+          key={`practice-out-${previousIndex}-${slot}`}
+          className="practice-crossfade-image practice-crossfade-outgoing"
+          src={images[previousIndex]}
+          alt=""
+          aria-hidden="true"
+        />
+      )}
+      <img
+        key={`practice-in-${activeIndex}-${slot}`}
+        className="practice-crossfade-image practice-crossfade-active"
+        src={images[activeIndex]}
+        alt={`Practice ${slot + 1}`}
+      />
+    </div>
+  )
+}
+
 function ArchiveCrossfade({ images, offset, slot, onOpen }) {
   const nextIndex = (offset + slot * 3) % images.length
   const [activeIndex, setActiveIndex] = useState(nextIndex)
@@ -381,8 +417,8 @@ function HomePage({ onOpenArchiveImage }) {
           <div id="practice">
             <h2>Tập tành</h2>
             <div className="practice-grid">
-              {practiceImages.map((image, index) => (
-                <img key={index} src={image} alt="" />
+              {[0, 1, 2, 3].map((slot) => (
+                <PracticeCrossfade key={slot} images={practiceImages} slot={slot} />
               ))}
             </div>
             <Link className="more" to="/practice">Xem tất cả →</Link>
@@ -467,8 +503,8 @@ function PracticePage() {
       <section className="page-section">
         <h2>Practice</h2>
         <div className="practice-grid page-practice-grid">
-          {practiceImages.map((image, index) => (
-            <img key={index} src={image} alt="" />
+          {[0, 1, 2, 3].map((slot) => (
+            <PracticeCrossfade key={slot} images={practiceImages} slot={slot} />
           ))}
         </div>
       </section>
