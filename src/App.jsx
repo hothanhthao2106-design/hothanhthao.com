@@ -99,7 +99,7 @@ function SiteHeader({ isDetailPage = false }) {
       </div>
 
       <nav>
-        <NavLink to="/">Giới thiệu</NavLink>
+        <NavLink to="/#intro">Giới thiệu</NavLink>
         <NavLink to="/films">Phim</NavLink>
         <NavLink to="/stories">Câu chuyện</NavLink>
         <NavLink to="/practice">Tập tành</NavLink>
@@ -185,6 +185,40 @@ function ArchiveGallery({ items = archive, compact = false, onSelect }) {
   )
 }
 
+function IntroSection() {
+  return (
+    <section id="intro" className="intro-section">
+      <div className="intro-media">
+        <img
+          src="/Images/MKE09956-3.jpg"
+          alt="Hồ Thanh Thảo"
+          className="intro-image"
+        />
+      </div>
+
+      <div className="intro-content">
+        <p>
+          Sinh ra tại Hà Nội, Việt Nam, Hồ Thanh Thảo tìm thấy điểm khởi đầu cho
+          những bộ phim của mình trong đời sống thường nhật của người dân miền
+          Bắc Việt Nam. Cô quan tâm đến những cảm xúc và suy nghĩ ít khi được gọi
+          tên — âm thầm nhưng dai dẳng trong đời sống thường nhật. Thảo thường
+          tìm đến những khoảnh khắc thỏa hiệp, nơi bản năng bị đè nén và sự hồn
+          nhiên dần phai nhạt.
+        </p>
+        <p>
+          Thảo tốt nghiệp Học viện Ngân hàng, nhưng đã bắt đầu tự học và thực
+          hành làm phim từ khi còn là sinh viên. Sau khi tốt nghiệp, cô chuyển
+          hướng để theo đuổi con đường làm phim độc lập. Trong quá trình làm
+          phim, Thảo thường tự viết kịch bản, đồng thời chủ động tìm kiếm nguồn
+          tài chính và xây dựng ê-kíp để hiện thực hóa các dự án của mình. Bên
+          cạnh công việc đạo diễn, cô còn tham gia vào nhiều vị trí khác nhau
+          trong các dự án phim truyện và phim tài liệu thương mại.
+        </p>
+      </div>
+    </section>
+  )
+}
+
 function HomePage({ onOpenArchiveImage }) {
   const [archiveSlideIndex, setArchiveSlideIndex] = useState(0)
 
@@ -201,6 +235,7 @@ function HomePage({ onOpenArchiveImage }) {
   return (
     <>
       <main>
+        <IntroSection />
         <section className="films" id="films" aria-label="Filmography">
           {films.map((film, index) => (
             <article className={`film-row ${index === 0 ? 'film-featured' : ''}`} key={film.number}>
@@ -403,6 +438,12 @@ function App() {
   const location = useLocation()
   const [selectedArchiveImage, setSelectedArchiveImage] = useState(null)
   const isDetailPage = location.pathname.startsWith('/films/') || location.pathname === '/archive'
+
+  useEffect(() => {
+    if (location.pathname === '/' && location.hash === '#intro') {
+      document.getElementById('intro')?.scrollIntoView()
+    }
+  }, [location.pathname, location.hash])
 
   return (
     <>
