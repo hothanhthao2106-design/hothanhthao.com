@@ -225,17 +225,6 @@ function IntroSection() {
 }
 
 function HomePage({ onOpenArchiveImage }) {
-  const [archiveSlideIndex, setArchiveSlideIndex] = useState(0)
-
-  useEffect(() => {
-    const timer = window.setInterval(() => {
-      setArchiveSlideIndex((current) => (current + 1) % landingArchiveSlides.length)
-    }, 2600)
-
-    return () => window.clearInterval(timer)
-  }, [])
-
-  const currentArchiveImage = landingArchiveSlides[archiveSlideIndex]
 
   return (
     <>
@@ -281,23 +270,18 @@ function HomePage({ onOpenArchiveImage }) {
 
           <div id="archive">
             <h2>Archive</h2>
-            <div className="landing-archive-showcase">
-              <button
-                type="button"
-                className="landing-archive-slide"
-                onClick={() => onOpenArchiveImage({ title: 'Archive', image: currentArchiveImage })}
-                aria-label="Xem ảnh archive lớn hơn"
-              >
-                <img src={currentArchiveImage} alt="Archive" />
-              </button>
-              <div className="archive-slider-dots" aria-label="Archive slideshow indicators">
-                {landingArchiveSlides.map((_, index) => (
-                  <span
-                    key={index}
-                    className={index === archiveSlideIndex ? 'active' : ''}
-                  />
-                ))}
-              </div>
+            <div className="landing-archive-grid">
+              {landingArchiveSlides.map((image, index) => (
+                <button
+                  type="button"
+                  className="landing-archive-item"
+                  key={`${image}-${index}`}
+                  onClick={() => onOpenArchiveImage({ title: `Archive ${index + 1}`, image })}
+                  aria-label={`Xem ảnh archive ${index + 1} lớn hơn`}
+                >
+                  <img src={image} alt={`Archive ${index + 1}`} />
+                </button>
+              ))}
             </div>
             <Link className="more" to="/archive">Xem tất cả →</Link>
           </div>

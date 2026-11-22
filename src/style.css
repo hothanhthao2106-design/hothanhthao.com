@@ -613,41 +613,41 @@ display: grid;
   font-size: 10.5px;
 }
 
-.landing-archive-showcase {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
+#archive {
+  min-width: 0;
 }
-.landing-archive-slide {
+.landing-archive-grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 10px;
+  width: 100%;
+}
+.landing-archive-item {
   display: block;
   width: 100%;
+  min-width: 0;
   padding: 0;
   border: 0;
   background: transparent;
   cursor: pointer;
+  overflow: hidden;
 }
-.landing-archive-slide img {
+.landing-archive-item img {
   display: block;
   width: 100%;
-  max-height: 290px;
-  height: auto;
-  object-fit: contain;
+  height: clamp(240px, 28vw, 420px);
+  object-fit: cover;
   border: 1px solid #ddd5cd;
   background: #f1efe9;
+  transition: transform 350ms ease, opacity 350ms ease, filter 350ms ease;
 }
-.archive-slider-dots {
-  display: flex;
-  justify-content: center;
-  gap: 8px;
+.landing-archive-item:hover img {
+  transform: scale(1.018);
+  opacity: 0.94;
 }
-.archive-slider-dots span {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: rgba(17, 17, 17, 0.2);
-}
-.archive-slider-dots span.active {
-  background: #cf2428;
+.landing-archive-item:focus-visible {
+  outline: 1px solid #cf2428;
+  outline-offset: 4px;
 }
 
 .page-archive-list {
@@ -794,15 +794,15 @@ border-top: 1px solid #d8d3c8;
 .film-copy h2 a,
 .more,
 .text-link,
-.landing-archive-slide,
+.landing-archive-item,
 .practice-grid img {
   transition: color 300ms ease, opacity 300ms ease, transform 300ms ease;
 }
-.landing-archive-slide img,
+.landing-archive-item img,
 .practice-grid img {
   transition: transform 350ms ease, opacity 350ms ease, filter 350ms ease;
 }
-.landing-archive-slide:hover img,
+.landing-archive-item:hover img,
 .practice-grid img:hover {
   transform: scale(1.012);
   opacity: 0.92;
@@ -810,7 +810,7 @@ border-top: 1px solid #d8d3c8;
 .text-link:focus-visible,
 .more:focus-visible,
 .film-copy h2 a:focus-visible,
-.landing-archive-slide:focus-visible {
+.landing-archive-item:focus-visible {
   outline: 1px solid #cf2428;
   outline-offset: 4px;
 }
@@ -884,6 +884,12 @@ footer {
   .film-awards { padding: 0; }
 
   .three-columns { display: block; }
+  .landing-archive-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .landing-archive-item img {
+    height: 220px;
+  }
   .three-columns > div,
   .three-columns > div:first-child {
     min-height: 0;
