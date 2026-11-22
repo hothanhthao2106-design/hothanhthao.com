@@ -38,10 +38,10 @@ h1, h2 {
   min-height: 520px;
   height: 43vw;
   max-height: 710px;
-  color: #fff;
+  color: #F3F0E9;
   padding: 30px 4vw;
   background:
-    linear-gradient(90deg, rgba(0,0,0,.76) 0%, rgba(0,0,0,.14) 64%, rgba(0,0,0,.64) 100%),
+    linear-gradient(90deg, rgba(0,0,0,.78) 0%, rgba(0,0,0,.34) 64%, rgba(0,0,0,.68) 100%),
     url("/Images/Omen.png") center / cover;
 }
 
@@ -60,7 +60,7 @@ h1, h2 {
   position: absolute;
   top: 30px;
   left: 4vw;
-  z-index: 1;
+  z-index: 2;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -74,10 +74,16 @@ h1, h2 {
   display: inline-flex;
   margin-top: 0;
 }
+.hero-detail .hero-name a {
+ color: #171715;
+ text-shadow: none;
+}
 
 .hero-name a {
   display: inline-block;
-  font-weight: 600;
+ color: #F3F0E9;
+ text-shadow: 0 2px 10px rgba(0, 0, 0, 0.72);
+ font-weight: 600;
   letter-spacing: -0.04em;
   line-height: 1;
 }
@@ -88,6 +94,10 @@ h1, h2 {
   font-weight: 400;
   letter-spacing: 0.08em;
   text-transform: uppercase;
+}
+.hero:not(.hero-detail) .hero-name em {
+  color: #F3F0E9;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.72);
 }
 
 nav {
@@ -160,7 +170,7 @@ nav a.active::after {
 
 .hero-quote {
   position: absolute;
-  z-index: 1;
+  z-index: 2;
   bottom: 18px;
   left: 4vw;
   max-width: min(56vw, 600px);
@@ -169,11 +179,14 @@ nav a.active::after {
   margin: 0 0 12px;
   font: 400 clamp(24px, 2.5vw, 40px) / 1.05 Arial, Helvetica, sans-serif;
   letter-spacing: -0.04em;
-  color: #fff;
+  color: #F3F0E9;
+  text-shadow: 0 3px 14px rgba(0, 0, 0, 0.82);
 }
 .hero-quote small {
   font: 9px "DM Mono", monospace;
   letter-spacing: .08em;
+  color: #F3F0E9;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.82);
 }
 
 main {
@@ -186,7 +199,7 @@ main {
 .intro-section {
  position: relative;
  z-index: 20;
- background: transparent;
+ background: #F3F0E9;
  display: grid;
  grid-template-columns: minmax(180px, .65fr) minmax(0, 1.35fr);
   align-items: center;
@@ -194,7 +207,8 @@ main {
  max-width: 1100px;
  margin: 0 auto;
  padding: 48px 6vw;
- border-bottom: 1px solid #dedbd5;
+ border-top: 1px solid #d8d3c8;
+ border-bottom: 1px solid #d8d3c8;
 }
 .intro-media { min-width: 0; }
 .intro-image {
@@ -206,7 +220,7 @@ main {
 }
 .intro-content {
  max-width: 620px;
- color: #292825;
+ color: #242321;
  font-size: clamp(12px, 1vw, 14px);
  line-height: 1.75;
 }
