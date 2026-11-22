@@ -109,44 +109,59 @@ nav {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 9px;
+  gap: 7px;
   width: auto;
-  max-width: 112px;
-  padding: 9px 10px;
-  background:
-    linear-gradient(rgba(24, 24, 22, 0.68), rgba(24, 24, 22, 0.68)),
-    url("/Images/Omen.png") right 28% / 240px 300px no-repeat;
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: 7px;
-  box-shadow: 0 3px 14px rgba(17, 17, 17, 0.12);
-  backdrop-filter: blur(8px) saturate(80%);
-  -webkit-backdrop-filter: blur(8px) saturate(80%);
+  max-width: 118px;
+  padding: 10px 12px;
+  background: rgba(25, 24, 22, 0.88);
+  border: 1px solid rgba(243, 240, 233, 0.10);
+  border-radius: 6px;
+  box-shadow: 0 5px 18px rgba(17, 17, 17, 0.16);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
   overflow: visible;
-  font: 700 16px "Playfair Display", Georgia, serif;
+  font: 500 15px "Playfair Display", Georgia, serif;
 }
 
 .hero-detail nav {
   position: fixed;
   margin-left: 0;
-  align-items: flex-end;
+  align-items: center;
 }
 nav a {
   width: 100%;
+  min-height: 26px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   text-align: center;
   position: relative;
-  color: #ffffff;
-  line-height: 1.35;
-  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.75);
-  transition: color 0.2s ease, transform 0.2s ease;
+  color: #F3F0E9;
+  line-height: 1.25;
+  opacity: 0.92;
+  transition: color 280ms ease, opacity 280ms ease, transform 280ms ease;
 }
-nav a:hover { color: #fff4df; }
+nav a::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: 1px;
+  width: 0;
+  height: 1px;
+  background: rgba(243, 240, 233, 0.72);
+  transform: translateX(-50%);
+  transition: width 280ms ease;
+}
+nav a:hover { color: #ffffff; opacity: 1; transform: translateX(-1px); }
+nav a:hover::before { width: 18px; }
 nav a:focus-visible {
   outline: 1px solid rgba(255, 255, 255, 0.9);
   outline-offset: 4px;
 }
 nav a.active {
-  color: #fff7e8;
-  font-weight: 700;
+  color: #ffffff;
+  font-weight: 500;
+  opacity: 1;
   transform: translateX(-2px);
 }
 nav a.active::after {
@@ -154,10 +169,11 @@ nav a.active::after {
   position: absolute;
   right: -10px;
   top: 50%;
-  width: 6px;
-  height: 6px;
+  width: 5px;
+  height: 5px;
   border-radius: 50%;
-  background: #f1c5a1;
+  background: #cf2428;
+  box-shadow: 0 0 0 1px rgba(243, 240, 233, 0.18);
   transform: translateY(-50%);
 }
 .nav-support,
@@ -812,17 +828,16 @@ footer {
     right: 12px;
     transform: none;
     align-items: center;
-    gap: 7px;
-    width: 82px;
-    max-width: 82px;
-    padding: 8px;
-    border-radius: 8px;
+    gap: 4px;
+    width: 78px;
+    max-width: 78px;
+    padding: 7px 8px;
+    border-radius: 6px;
     overflow: visible;
-    background:
-      linear-gradient(rgba(24, 24, 22, 0.74), rgba(24, 24, 22, 0.74)),
-      url("/Images/Omen.png") right 35% / 170px 220px no-repeat;
-    font-size: 11px;
+    background: rgba(25, 24, 22, 0.90);
+    font-size: 11.5px;
   }
+  nav a { min-height: 24px; }
   nav a {
     width: 100%;
     text-align: center;

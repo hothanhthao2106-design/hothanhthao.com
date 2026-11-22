@@ -98,6 +98,7 @@ function Navigation({ activeSection = 'about' }) {
       <Link to="/#stories" className={activeSection === 'stories' ? 'active' : ''}>Stories</Link>
       <Link to="/#practice" className={activeSection === 'practice' ? 'active' : ''}>Practice</Link>
       <Link to="/#archive" className={activeSection === 'archive' ? 'active' : ''}>Archive</Link>
+      <Link to="/#donate" className={activeSection === 'donate' ? 'active' : ''}>Donate</Link>
     </nav>
   )
 }
@@ -457,7 +458,7 @@ function App() {
   useEffect(() => {
     if (location.pathname !== '/') return
 
-    const sectionIds = ['about', 'films', 'stories', 'practice', 'archive']
+    const sectionIds = ['about', 'films', 'stories', 'practice', 'archive', 'donate']
     const updateActiveSection = () => {
       let current = 'about'
       for (const sectionId of sectionIds) {
