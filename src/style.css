@@ -432,17 +432,18 @@ main {
  z-index: 20;
  background: #f8f6f2;
  display: grid;
-  grid-template-columns: .9fr 1.25fr 1fr;
+ grid-template-columns: 1fr;
   margin: 0 4vw;
   border-bottom: 1px solid #dedbd5;
 }
 .three-columns > div {
-  min-height: 360px;
-  padding: 28px 24px;
-  border-right: 1px solid #dedbd5;
+ min-height: 0;
+ padding: 28px 0;
+ border-right: 0;
+ border-bottom: 1px solid #dedbd5;
 }
 .three-columns > div:first-child { padding-left: 0; }
-.three-columns > div:last-child { border-right: 0; }
+.three-columns > div:last-child { border-bottom: 0; }
 
 .three-columns h2 {
   margin-bottom: 26px;
