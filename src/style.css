@@ -662,11 +662,18 @@ display: grid;
 #archive {
   min-width: 0;
 }
-.landing-archive-grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+.landing-archive-carousel {
+  display: flex;
   gap: 10px;
   width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.landing-archive-carousel::-webkit-scrollbar {
+  display: none;
 }
 .landing-archive-item {
   display: block;
@@ -677,6 +684,8 @@ display: grid;
   background: transparent;
   cursor: pointer;
   overflow: hidden;
+  flex: 0 0 calc((100% - 20px) / 3);
+  scroll-snap-align: start;
 }
 .landing-archive-item img {
   display: block;
@@ -686,36 +695,6 @@ display: grid;
   border: 1px solid #ddd5cd;
   background: #f1efe9;
   transition: transform 350ms ease;
-}
-.archive-crossfade {
-  position: relative;
-  aspect-ratio: 16 / 10;
-  height: auto;
-}
-.archive-crossfade .archive-image {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border: 1px solid #ddd5cd;
-  background: #f1efe9;
-}
-.archive-crossfade .archive-image-active {
-  z-index: 2;
-  animation: archiveCrossfadeIn 900ms cubic-bezier(0.22, 1, 0.36, 1) both;
-}
-.archive-crossfade .archive-image-outgoing {
-  z-index: 1;
-  animation: archiveCrossfadeOut 900ms cubic-bezier(0.22, 1, 0.36, 1) both;
-}
-@keyframes archiveCrossfadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-@keyframes archiveCrossfadeOut {
-  from { opacity: 1; }
-  to { opacity: 0; }
 }
 .landing-archive-item:hover img {
   transform: scale(1.018);
@@ -989,16 +968,14 @@ footer {
   .film-awards { padding: 0; }
 
   .three-columns { display: block; }
-  .landing-archive-grid {
-    grid-template-columns: 1fr;
+  .landing-archive-carousel {
+    gap: 8px;
   }
-  .landing-archive-item,
-  .archive-crossfade {
-    height: auto;
+  .landing-archive-item {
+    flex-basis: calc((100% - 8px) / 2);
   }
-  .landing-archive-item img,
-  .archive-crossfade .archive-image {
-    height: 100%;
+  .landing-archive-item img {
+    height: 220px;
   }
   .three-columns > div,
   .three-columns > div:first-child {

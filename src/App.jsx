@@ -1,5 +1,5 @@
 import { Link, Route, Routes, useLocation, useParams } from 'react-router-dom'
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 const films = [
   {
@@ -29,8 +29,8 @@ const films = [
     details: '2020 · Phim ngắn · Drama',
     description:
       'Sau nhiều tháng không nhận được lương, một nhân viên tín dụng trẻ, thiếu kinh nghiệm buộc phải liều mình tìm kiếm khách hàng ngay trong địa bàn do các băng nhóm tín dụng đen kiểm soát.ệc.',
-    image: '/Images/Đường Cao Tốc/DCT.png',
-    images: ['/Images/Đường Cao Tốc/DCT.png', '/Images/Đường Cao Tốc/DCT2.png', '/Images/Đường Cao Tốc/DCT3.png'],
+    image: '/Images/Duong Cao Toc/DCT.png',
+    images: ['/Images/Duong Cao Toc/DCT.png', '/Images/Duong Cao Toc/DCT2.png', '/Images/Duong Cao Toc/DCT3.png'],
     awards: 'Giải Cánh Diều Bạc\nDanh sách rút gọn · Quinzaine des Réalisateurs',
   },
   {
@@ -306,56 +306,48 @@ function PracticeCrossfade({ images, slot }) {
   )
 }
 
-function ArchiveCrossfade({ images, offset, slot, onOpen }) {
-  const nextIndex = (offset + slot * 3) % images.length
-  const [activeIndex, setActiveIndex] = useState(nextIndex)
-  const [previousIndex, setPreviousIndex] = useState(nextIndex)
+function ArchiveCarousel({ images, onOpen }) {
+  const trackRef = useRef(null)
 
   useEffect(() => {
-    if (nextIndex === activeIndex) return
-    setPreviousIndex(activeIndex)
-    setActiveIndex(nextIndex)
-  }, [nextIndex, activeIndex])
+    const track = trackRef.current
+    if (!track) return
 
-  const activeImage = images[activeIndex]
-  const previousImage = images[previousIndex]
-
-  return (
-    <button
-      type="button"
-      className="landing-archive-item archive-crossfade"
-      onClick={() => onOpen({ title: `Archive ${slot + 1}`, image: activeImage })}
-      aria-label={`Xem ảnh archive ${slot + 1} lớn hơn`}
-    >
-      {previousIndex !== activeIndex && (
-        <img
-          key={`outgoing-${previousIndex}-${slot}`}
-          className="archive-image archive-image-outgoing"
-          src={previousImage}
-          alt=""
-          aria-hidden="true"
-        />
-      )}
-      <img
-        key={`active-${activeIndex}-${slot}`}
-        className="archive-image archive-image-active"
-        src={activeImage}
-        alt={`Archive landscape ${slot + 1}`}
-      />
-    </button>
-  )
-}
-
-function HomePage({ onOpenArchiveImage }) {
-  const [archiveOffset, setArchiveOffset] = useState(0)
-
-  useEffect(() => {
     const timer = window.setInterval(() => {
-      setArchiveOffset((current) => (current + 1) % archive.length)
+      const card = track.querySelector('.landing-archive-item')
+      if (!card) return
+      const gap = 10
+      const nextLeft = track.scrollLeft + card.getBoundingClientRect().width + gap
+      const maxLeft = track.scrollWidth - track.clientWidth
+
+      if (nextLeft > maxLeft + 2) {
+        track.scrollTo({ left: 0, behavior: 'smooth' })
+      } else {
+        track.scrollBy({ left: card.getBoundingClientRect().width + gap, behavior: 'smooth' })
+      }
     }, 4200)
 
     return () => window.clearInterval(timer)
   }, [])
+
+  return (
+    <div className="landing-archive-carousel" ref={trackRef}>
+      {images.map((image, index) => (
+        <button
+          type="button"
+          className="landing-archive-item"
+          key={`${image}-${index}`}
+          onClick={() => onOpen({ title: `Archive ${index + 1}`, image })}
+          aria-label={`Xem ảnh archive ${index + 1} lớn hơn`}
+        >
+          <img src={image} alt={`Archive ${index + 1}`} />
+        </button>
+      ))}
+    </div>
+  )
+}
+
+function HomePage({ onOpenArchiveImage }) {
 
   return (
     <>
@@ -400,17 +392,7 @@ function HomePage({ onOpenArchiveImage }) {
 
           <div id="archive">
             <h2>Archive</h2>
-            <div className="landing-archive-grid">
-              {[0, 1, 2].map((slot) => (
-                <ArchiveCrossfade
-                  key={slot}
-                  images={archive}
-                  offset={archiveOffset}
-                  slot={slot}
-                  onOpen={onOpenArchiveImage}
-                />
-              ))}
-            </div>
+            <ArchiveCarousel images={archive} onOpen={onOpenArchiveImage} />
             <Link className="more" to="/archive">Xem tất cả →</Link>
           </div>
 
