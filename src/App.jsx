@@ -397,13 +397,13 @@ function HomePage({ onOpenArchiveImage }) {
                 <PracticeCrossfade key={slot} images={practiceImages} slot={slot} />
               ))}
             </div>
-            <Link className="more" to="/#practice">Xem tất cả →</Link>
+            <Link className="more" to="/practice">Xem tất cả →</Link>
           </div>
 
           <div id="archive">
             <h2>Archive</h2>
             <ArchiveCarousel images={archive} onOpen={onOpenArchiveImage} />
-            <Link className="more" to="/#archive">Xem tất cả →</Link>
+            <Link className="more" to="/archive">Xem tất cả →</Link>
           </div>
         </section>
 
@@ -537,7 +537,7 @@ function App() {
   const location = useLocation()
   const [selectedArchiveImage, setSelectedArchiveImage] = useState(null)
   const [activeSection, setActiveSection] = useState('about')
-  const isDetailPage = location.pathname.startsWith('/films/')
+  const isDetailPage = location.pathname.startsWith('/films/') || ['/stories', '/practice', '/archive'].includes(location.pathname)
 
   useEffect(() => {
     if (location.pathname === '/' && location.hash) {
@@ -549,6 +549,18 @@ function App() {
   }, [location.pathname, location.hash])
 
   useEffect(() => {
+    if (location.pathname === '/practice') {
+      setActiveSection('practice')
+      return
+    }
+    if (location.pathname === '/archive') {
+      setActiveSection('archive')
+      return
+    }
+    if (location.pathname === '/stories') {
+      setActiveSection('stories')
+      return
+    }
     if (location.pathname !== '/') return
 
     const sectionIds = ['about', 'films', 'stories', 'practice', 'archive']
@@ -576,6 +588,8 @@ function App() {
         <Route path="/" element={<HomePage onOpenArchiveImage={setSelectedArchiveImage} />} />
         <Route path="/films/:filmSlug" element={<FilmDetailPage />} />
         <Route path="/stories" element={<StoriesPage />} />
+        <Route path="/practice" element={<PracticePage />} />
+        <Route path="/archive" element={<ArchivePage onOpenArchiveImage={setSelectedArchiveImage} />} />
         <Route path="/support" element={<SupportPage />} />
       </Routes>
 
