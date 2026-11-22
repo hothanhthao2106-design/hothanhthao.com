@@ -85,17 +85,21 @@ h1, h2 {
 nav {
   position: fixed;
   z-index: 60;
-  top: 30px;
-  right: 4vw;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  gap: 16px;
-  padding: 10px 12px;
+  gap: 14px;
+  width: auto;
+  max-width: 96px;
+  padding: 14px 10px 14px 14px;
   background: #f8f6f2;
   border: 1px solid #dedbd5;
-  border-radius: 4px;
-  box-shadow: 0 4px 18px rgba(17, 17, 17, 0.08);
+  border-right: 0;
+  border-radius: 4px 0 0 4px;
+  box-shadow: -4px 4px 18px rgba(17, 17, 17, 0.08);
   overflow: visible;
   font: 700 16px "Playfair Display", Georgia, serif;
 }
@@ -675,14 +679,17 @@ footer {
   .hero { height: 650px; min-height: 650px; }
   .hero-name { top: 76px; font-size: 23px; }
   nav {
-    top: 76px;
+    top: 50%;
     left: auto;
-    right: 8px;
+    right: 0;
+    transform: translateY(-50%);
     align-items: flex-end;
-    gap: 7px;
-    width: 86px;
-    padding: 8px;
-    border-radius: 4px;
+    gap: 8px;
+    width: 72px;
+    max-width: 72px;
+    padding: 8px 6px 8px 8px;
+    border-right: 0;
+    border-radius: 4px 0 0 4px;
     overflow: visible;
     font-size: 11px;
   }
