@@ -8,7 +8,8 @@ const films = [
     title: 'Một tấm hình thị thực',
     details: 'Đang phát triển · Phim ngắn · Tìm kiếm đối tác tài trợ và sản xuất.',
     description: 'Một người phụ nữ nông thôn cùng hai đứa con đến thành phố để chụp lại ảnh visa. Tin rằng tấm ảnh là nguyên nhân khiến hồ sơ trước bị từ chối, cô cố kiểm soát tối đa diện mạo của mình, trong khi thế giới xung quanh ngày một trở nên mong manh và bất định.',
-    image: '/Images/Avisaphoto.jpg',
+    image: '/Images/A visa photo/Avisaphoto.jpg',
+    images: ['/Images/A visa photo/Avisaphoto.jpg', '/Images/A visa photo/Cover.png'],
     awards: '',
   },
   {
@@ -17,7 +18,8 @@ const films = [
     title: 'Điềm Báo',
     details: '2025 · Phim ngắn · Drama',
     description: 'Cho rằng những giấc mơ nhục cảm về người đàn ông xa lạ chính là nguồn cơn đem lại vận rủi cho con trai như lời thầy bói phán, một góa phụ tuyệt vọng lao vào cuộc chiến chống lại ham muốn của bản thân, đứng trước ranh giới mong manh của mê tín, dục vọng và tội lỗi',
-    image: '/Images/Omen4.png',
+    image: '/Images/Omen/Omen4.png',
+    images: ['/Images/Omen/Omen.png', '/Images/Omen/Omen2.png', '/Images/Omen/Omen3.png', '/Images/Omen/Omen4.png', '/Images/Omen/omen 4.png'],
     awards: 'Lựa chọn chính thức · SSFF & ASIA\nLựa chọn chính thức · Jogja-NETPAC\nLựa chọn chính thức · Bengaluru International Film Festival',
   },
   {
@@ -27,7 +29,8 @@ const films = [
     details: '2020 · Phim ngắn · Drama',
     description:
       'Sau nhiều tháng không nhận được lương, một nhân viên tín dụng trẻ, thiếu kinh nghiệm buộc phải liều mình tìm kiếm khách hàng ngay trong địa bàn do các băng nhóm tín dụng đen kiểm soát.ệc.',
-    image: '/Images/DCT.png',
+    image: '/Images/Đường Cao Tốc/DCT.png',
+    images: ['/Images/Đường Cao Tốc/DCT.png', '/Images/Đường Cao Tốc/DCT2.png', '/Images/Đường Cao Tốc/DCT3.png'],
     awards: 'Giải Cánh Diều Bạc\nDanh sách rút gọn · Quinzaine des Réalisateurs',
   },
   {
@@ -37,7 +40,8 @@ const films = [
     details: '2017 · Phim ngắn · Drama',
     description:
       'Trong một buổi nhậu đêm khuya, một cô gái trẻ bất ngờ trở nên thân mật với một tay giang hồ knguy hiểm ngay trước mắt người bạn trai bất lực của mình, khiến mối quan hệ giữa ba người dần trượt vào một đêm đầy căng thẳng và khó lường.',
-    image: '/Images/Ephemera.png',
+    image: '/Images/Ephemera/Ephemera.png',
+    images: ['/Images/Ephemera/Ephemera.png', '/Images/Ephemera/Ephemera2.png', '/Images/Ephemera/Ephemera3.jpg'],
     awards: 'Giải Búp Sen Vàng\nLựa chọn chính thức · Singapore International Film Festival\nTrình chiếu tại: Liên hoan phim Tài liệu & Ngắn Quốc tế Kerala; 7th NABIFIMEX (Philippines); SeaShorts International Film Festival (Malaysia); Stadtlichter International Film Festival (Đức); Vietnamese Showcase tại Griffith Film School (Úc)',
   },
 ]
@@ -84,10 +88,15 @@ const archive = [
 const landingArchiveSlides = archive.slice(-5)
 
 const practiceImages = [
-  'https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=600&q=80',
-  'https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?auto=format&fit=crop&w=600&q=80',
-  'https://images.unsplash.com/photo-1516280440614-37939bbacd81?auto=format&fit=crop&w=600&q=80',
-  'https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?auto=format&fit=crop&w=600&q=80',
+  '/Images/Practice/47684617_2788984664475613_8154136939218337792_n.jpg',
+  '/Images/Practice/Nha Ma 2.jpg',
+  '/Images/Practice/Nha Ma.jpg',
+  '/Images/Practice/Nhà Nghỉ.jpeg',
+  '/Images/Practice/SGIFF 2018.jpg',
+  '/Images/Practice/Vang lua 2.jpg',
+  '/Images/Practice/Vang lua.jpg',
+  '/Images/Practice/Vang lưa 3.jpg',
+  '/Images/Practice/Đường phố.jpg',
 ]
 
 function Navigation({ activeSection = 'about' }) {
@@ -142,7 +151,7 @@ function FilmDetailPage() {
         <Link to="/" className="back-link">← Quay lại</Link>
 
         <div className="film-detail-hero">
-          <img src={film.image} alt={film.title} className="film-detail-image" />
+          <FilmCrossfade film={film} className="film-detail-crossfade" />
         </div>
 
         <div className="film-detail">
@@ -224,6 +233,43 @@ function IntroSection() {
   )
 }
 
+function FilmCrossfade({ film, className = '' }) {
+  const images = film.images?.length ? film.images : [film.image]
+  const [activeIndex, setActiveIndex] = useState(0)
+  const [previousIndex, setPreviousIndex] = useState(0)
+
+  useEffect(() => {
+    if (images.length < 2) return
+    const timer = window.setInterval(() => {
+      setActiveIndex((current) => {
+        setPreviousIndex(current)
+        return (current + 1) % images.length
+      })
+    }, 4200)
+    return () => window.clearInterval(timer)
+  }, [images.length])
+
+  return (
+    <div className={`film-crossfade ${className}`}>
+      {previousIndex !== activeIndex && (
+        <img
+          key={`film-out-${previousIndex}`}
+          className="film-crossfade-image film-crossfade-outgoing"
+          src={images[previousIndex]}
+          alt=""
+          aria-hidden="true"
+        />
+      )}
+      <img
+        key={`film-in-${activeIndex}`}
+        className="film-crossfade-image film-crossfade-active"
+        src={images[activeIndex]}
+        alt={film.title}
+      />
+    </div>
+  )
+}
+
 function ArchiveCrossfade({ images, offset, slot, onOpen }) {
   const nextIndex = (offset + slot * 3) % images.length
   const [activeIndex, setActiveIndex] = useState(nextIndex)
@@ -290,9 +336,8 @@ function HomePage({ onOpenArchiveImage }) {
               </div>
 
               <Link to={`/films/${film.slug}`} className="film-image-link">
-                <img
-                  src={film.image}
-                  alt={film.title}
+                <FilmCrossfade
+                  film={film}
                   className={film.title === 'Đường Cao Tốc' ? 'film-image-no-frame' : ''}
                 />
               </Link>
@@ -383,7 +428,7 @@ function FilmsPage() {
         <div className="page-list">
           {films.map((film) => (
             <article className="page-card film-page-card" key={film.number}>
-              <img src={film.image} alt={film.title} className="page-card-image" />
+              <FilmCrossfade film={film} className="page-card-crossfade" />
               <div>
                 <span className="film-number">{film.number}</span>
                 <h3>{film.title}</h3>
