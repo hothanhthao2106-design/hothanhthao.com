@@ -224,20 +224,56 @@ function IntroSection() {
   )
 }
 
+function ArchiveCrossfade({ images, offset, slot, onOpen }) {
+  const nextIndex = (offset + slot * 3) % images.length
+  const [activeIndex, setActiveIndex] = useState(nextIndex)
+  const [previousIndex, setPreviousIndex] = useState(nextIndex)
+
+  useEffect(() => {
+    if (nextIndex === activeIndex) return
+    setPreviousIndex(activeIndex)
+    setActiveIndex(nextIndex)
+  }, [nextIndex, activeIndex])
+
+  const activeImage = images[activeIndex]
+  const previousImage = images[previousIndex]
+
+  return (
+    <button
+      type="button"
+      className="landing-archive-item archive-crossfade"
+      onClick={() => onOpen({ title: `Archive ${slot + 1}`, image: activeImage })}
+      aria-label={`Xem ảnh archive ${slot + 1} lớn hơn`}
+    >
+      {previousIndex !== activeIndex && (
+        <img
+          key={`outgoing-${previousIndex}-${slot}`}
+          className="archive-image archive-image-outgoing"
+          src={previousImage}
+          alt=""
+          aria-hidden="true"
+        />
+      )}
+      <img
+        key={`active-${activeIndex}-${slot}`}
+        className="archive-image archive-image-active"
+        src={activeImage}
+        alt={`Archive landscape ${slot + 1}`}
+      />
+    </button>
+  )
+}
+
 function HomePage({ onOpenArchiveImage }) {
   const [archiveOffset, setArchiveOffset] = useState(0)
 
   useEffect(() => {
     const timer = window.setInterval(() => {
       setArchiveOffset((current) => (current + 1) % archive.length)
-    }, 2800)
+    }, 4200)
 
     return () => window.clearInterval(timer)
   }, [])
-
-  const rotatingArchiveImages = landingArchiveSlides.map((_, index) => (
-    archive[(archiveOffset + index) % archive.length]
-  ))
 
   return (
     <>
@@ -284,16 +320,14 @@ function HomePage({ onOpenArchiveImage }) {
           <div id="archive">
             <h2>Archive</h2>
             <div className="landing-archive-grid">
-              {rotatingArchiveImages.map((image, index) => (
-                <button
-                  type="button"
-                  className="landing-archive-item"
-                  key={`${image}-${index}`}
-                  onClick={() => onOpenArchiveImage({ title: `Archive ${index + 1}`, image })}
-                  aria-label={`Xem ảnh archive ${index + 1} lớn hơn`}
-                >
-                  <img src={image} alt={`Archive ${index + 1}`} />
-                </button>
+              {[0, 1, 2].map((slot) => (
+                <ArchiveCrossfade
+                  key={slot}
+                  images={archive}
+                  offset={archiveOffset}
+                  slot={slot}
+                  onOpen={onOpenArchiveImage}
+                />
               ))}
             </div>
             <Link className="more" to="/archive">Xem tất cả →</Link>
