@@ -103,7 +103,6 @@ function SiteHeader({ isDetailPage = false }) {
         <Link to="/#films">Films</Link>
         <Link to="/#stories">Stories</Link>
         <Link to="/#practice">Practice</Link>
-        <Link to="/#archive">Archive</Link>
         <Link to="/#donate" className="nav-support">Donate</Link>
       </nav>
 
@@ -214,6 +213,7 @@ function IntroSection() {
           cạnh công việc đạo diễn, cô còn tham gia vào nhiều vị trí khác nhau
           trong các dự án phim truyện và phim tài liệu thương mại.
         </p>
+      
       </div>
     </section>
   )
@@ -330,8 +330,8 @@ function HomePage({ onOpenArchiveImage }) {
           </div>
 
           <div className="payment">
-            <strong>Hỗ trợ khác</strong>
-            <p>Liên hệ để trao đổi phương thức hỗ trợ phù hợp.</p>
+            <strong>Contact</strong>
+            <p>Email: hothanhthao2106@gmail.com</p>
           </div>
         </section>
       </main>
@@ -478,7 +478,7 @@ function App() {
 
       <footer>
         <span>© 2026 Hồ Thanh Thảo</span>
-        <span>Instagram　 Facebook　 Email</span>
+  
       </footer>
     </>
   )
