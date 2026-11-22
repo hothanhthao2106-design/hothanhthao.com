@@ -2,7 +2,7 @@
 
 :root {
   font-family: Arial, sans-serif;
-  color: #101010;
+  color: #171715;
   background: #F3F0E9;
   line-height: 1.45;
 }
@@ -52,8 +52,8 @@ h1, h2 {
   position: relative;
   z-index: 10;
   background: #F3F0E9;
-  color: #101010;
-  border-bottom: 1px solid #dedbd5;
+  color: #171715;
+  border-bottom: 1px solid #d8d3c8;
 }
 
 .hero-name {
@@ -104,7 +104,7 @@ nav {
   max-width: 112px;
   padding: 9px 10px;
   background:
-    linear-gradient(rgba(31, 30, 27, 0.58), rgba(31, 30, 27, 0.58)),
+    linear-gradient(rgba(24, 24, 22, 0.68), rgba(24, 24, 22, 0.68)),
     url("/Images/Omen.png") right 28% / 240px 300px no-repeat;
   border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: 7px;
@@ -129,13 +129,13 @@ nav a {
   text-shadow: 0 1px 3px rgba(0, 0, 0, 0.75);
   transition: color 0.2s ease, transform 0.2s ease;
 }
-nav a:hover { color: #e1d6c4; }
+nav a:hover { color: #fff4df; }
 nav a:focus-visible {
   outline: 1px solid rgba(255, 255, 255, 0.9);
   outline-offset: 4px;
 }
 nav a.active {
-  color: #f1e7d7;
+  color: #fff7e8;
   font-weight: 700;
   transform: translateX(-2px);
 }
@@ -147,7 +147,7 @@ nav a.active::after {
   width: 6px;
   height: 6px;
   border-radius: 50%;
-  background: #cf2428;
+  background: #f1c5a1;
   transform: translateY(-50%);
 }
 .nav-support,
@@ -206,6 +206,7 @@ main {
 }
 .intro-content {
  max-width: 620px;
+ color: #292825;
  font-size: clamp(12px, 1vw, 14px);
  line-height: 1.75;
 }
@@ -312,6 +313,7 @@ main {
 }
 .film-copy p {
   max-width: 310px;
+  color: #292825;
   font-size: 13.5px;
   line-height: 1.7;
 }
@@ -439,6 +441,7 @@ main {
   align-self: center;
   margin: 0;
   padding: 0 8px;
+  color: #34322e;
   font-family: "Montserrat", Arial, sans-serif;
   font-size: 12.5px;
   line-height: 1.65;
@@ -488,13 +491,14 @@ main {
   justify-content: space-between;
   gap: 12px;
   padding: 7px 0;
-  border-bottom: 1px solid #e5e2dd;
+  border-bottom: 1px solid #d9d4c8;
+  color: #242320;
   font-size: 13px;
   line-height: 1.6;
   transition: color 300ms ease, opacity 300ms ease;
 }
 .text-link:hover, .more:hover { color: #cf2428; }
-.text-link small { color: #777; font-size: 10px; }
+.text-link small { color: #656157; font-size: 10.5px; }
 
 .archive-list {
   display: grid;
@@ -699,7 +703,7 @@ main {
   color: #cf2428;
 }
 .support-intro h2 em { white-space: nowrap; }
-.support-intro p { max-width: 310px; font-size: 12px; line-height: 1.6; }
+.support-intro p { max-width: 310px; color: #292825; font-size: 13px; line-height: 1.65; }
 
 .payment-qr {
   display: flex;
@@ -720,7 +724,8 @@ main {
 .payment strong { font-size: 12px; }
 .payment p {
   margin: 0 0 6px;
-  line-height: 1.5;
+  color: #292825;
+  line-height: 1.55;
 }
 .payment b { color: #cf2428; font-size: 18px; }
 
@@ -762,7 +767,7 @@ footer {
   justify-content: space-between;
   padding: 18px clamp(150px, 12vw, 170px) 18px 4vw;
   border-top: 1px solid #dedbd5;
-  color: #777;
+  color: #5f5b52;
   font-size: 11px;
 }
 
@@ -782,7 +787,7 @@ footer {
     border-radius: 8px;
     overflow: visible;
     background:
-      linear-gradient(rgba(31, 30, 27, 0.62), rgba(31, 30, 27, 0.62)),
+      linear-gradient(rgba(24, 24, 22, 0.74), rgba(24, 24, 22, 0.74)),
       url("/Images/Omen.png") right 35% / 170px 220px no-repeat;
     font-size: 11px;
   }
