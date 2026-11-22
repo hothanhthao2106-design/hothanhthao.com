@@ -36,7 +36,7 @@ h1, h2 {
   top: 0;
   z-index: 10;
   min-height: 520px;
-  height: 43vw;
+  height: clamp(520px, 43vw, 710px);
   max-height: 710px;
   color: #F3F0E9;
   padding: 30px 4vw;
@@ -139,7 +139,7 @@ nav a {
   color: #F3F0E9;
   line-height: 1.25;
   opacity: 0.92;
-  transition: color 280ms ease, opacity 280ms ease, transform 280ms ease;
+  transition: color 280ms ease, opacity 280ms ease;
 }
 nav a::before {
   content: '';
@@ -152,7 +152,7 @@ nav a::before {
   transform: translateX(-50%);
   transition: width 280ms ease;
 }
-nav a:hover { color: #ffffff; opacity: 1; transform: translateX(-1px); }
+nav a:hover { color: #ffffff; opacity: 1; }
 nav a:hover::before { width: 18px; }
 nav a:focus-visible {
   outline: 1px solid rgba(255, 255, 255, 0.9);
@@ -162,7 +162,6 @@ nav a.active {
   color: #ffffff;
   font-weight: 500;
   opacity: 1;
-  transform: translateX(-2px);
 }
 nav a.active::after {
   content: '';
