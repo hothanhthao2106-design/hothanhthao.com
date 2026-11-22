@@ -423,6 +423,16 @@ main {
   color: #242321;
   font-size: 28px;
 }
+.stories-page {
+  padding-right: clamp(150px, 12vw, 170px);
+}
+.stories-page-section {
+  max-width: none;
+  margin: 0;
+}
+.page-story-list {
+  max-width: 760px;
+}
 
 .back-link {
   display: inline-block;
@@ -997,6 +1007,9 @@ footer {
   }
   .support-intro { grid-column: 1 / -1; }
   main { padding-right: 96px; }
+  .stories-page {
+    padding-right: 96px;
+  }
   footer {
     display: block;
     padding-right: 96px;

@@ -463,8 +463,8 @@ function FilmsPage() {
 
 function StoriesPage() {
   return (
-    <main className="page-shell">
-      <section className="page-section">
+    <main className="page-shell stories-page">
+      <section className="page-section stories-page-section">
         <h2>Câu chuyện</h2>
         <div className="story-list page-story-list">
           {stories.map(([title, year]) => (
