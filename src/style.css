@@ -977,6 +977,12 @@ footer {
   .landing-archive-item img {
     height: 220px;
   }
+  .page-practice-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .page-practice-grid img {
+    height: 180px;
+  }
   .three-columns > div,
   .three-columns > div:first-child {
     min-height: 0;

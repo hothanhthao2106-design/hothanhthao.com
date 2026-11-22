@@ -485,8 +485,8 @@ function PracticePage() {
       <section className="page-section">
         <h2>Practice</h2>
         <div className="practice-grid page-practice-grid">
-          {[0, 1, 2, 3].map((slot) => (
-            <PracticeCrossfade key={slot} images={practiceImages} slot={slot} />
+          {practiceImages.map((image, index) => (
+            <img key={image} src={image} alt={`Practice ${index + 1}`} />
           ))}
         </div>
       </section>
