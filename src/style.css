@@ -95,12 +95,14 @@ nav {
   width: auto;
   max-width: 120px;
   padding: 10px 12px;
-  background: rgba(248, 246, 242, 0.85);
-  border: 1px solid rgba(17, 17, 17, 0.12);
+  background:
+    linear-gradient(rgba(248, 246, 242, 0.72), rgba(248, 246, 242, 0.72)),
+    url("/Images/Omen.png") right 28% / 240px 300px no-repeat;
+  border: 1px solid rgba(255, 255, 255, 0.45);
   border-radius: 8px;
-  box-shadow: 0 4px 18px rgba(17, 17, 17, 0.12);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
+  box-shadow: 0 4px 18px rgba(17, 17, 17, 0.18);
+  backdrop-filter: blur(8px) saturate(80%);
+  -webkit-backdrop-filter: blur(8px) saturate(80%);
   overflow: visible;
   font: 700 16px "Playfair Display", Georgia, serif;
 }
@@ -710,6 +712,9 @@ footer {
     padding: 8px;
     border-radius: 8px;
     overflow: visible;
+    background:
+      linear-gradient(rgba(248, 246, 242, 0.78), rgba(248, 246, 242, 0.78)),
+      url("/Images/Omen.png") right 35% / 170px 220px no-repeat;
     font-size: 11px;
   }
   nav a {
