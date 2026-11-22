@@ -1,4 +1,4 @@
-import { Link, NavLink, Route, Routes, useLocation, useParams } from 'react-router-dom'
+import { Link, Route, Routes, useLocation, useParams } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 
 const films = [
@@ -98,13 +98,12 @@ function SiteHeader({ isDetailPage = false }) {
         <em>Filmmaker</em>
       </div>
 
-      <nav>
-        <NavLink to="/#intro">Giới thiệu</NavLink>
-        <NavLink to="/films">Phim</NavLink>
-        <NavLink to="/stories">Câu chuyện</NavLink>
-        <NavLink to="/practice">Tập tành</NavLink>
-        <NavLink to="/archive">Archive</NavLink>
-        <NavLink to="/support" className="nav-support">Đồng hành</NavLink>
+      <nav aria-label="Main navigation">
+        <Link to="/#about">About</Link>
+        <Link to="/#films">Films</Link>
+        <Link to="/#stories">Stories</Link>
+        <Link to="/#practice">Practice</Link>
+        <Link to="/#donate" className="nav-support">Donate</Link>
       </nav>
 
       {!isDetailPage && (
@@ -187,7 +186,7 @@ function ArchiveGallery({ items = archive, compact = false, onSelect }) {
 
 function IntroSection() {
   return (
-    <section id="intro" className="intro-section">
+    <section id="about" className="intro-section">
       <div className="intro-media">
         <img
           src="/Images/MKE09956-3.jpg"
@@ -263,7 +262,7 @@ function HomePage({ onOpenArchiveImage }) {
           ))}
         </section>
 
-        <section className="three-columns" id="about">
+        <section className="three-columns">
           <div id="stories">
             <h2>Câu chuyện</h2>
             {stories.map(([title, year]) => (
@@ -308,7 +307,7 @@ function HomePage({ onOpenArchiveImage }) {
           </div>
         </section>
 
-        <section className="support" id="support">
+        <section className="support" id="donate">
           <div className="support-intro">
             <h2>Đồng hành cùng dự án</h2>
             <p>
@@ -440,8 +439,11 @@ function App() {
   const isDetailPage = location.pathname.startsWith('/films/') || location.pathname === '/archive'
 
   useEffect(() => {
-    if (location.pathname === '/' && location.hash === '#intro') {
-      document.getElementById('intro')?.scrollIntoView()
+    if (location.pathname === '/' && location.hash) {
+      const sectionId = location.hash.slice(1)
+      window.requestAnimationFrame(() => {
+        document.getElementById(sectionId)?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+      })
     }
   }, [location.pathname, location.hash])
 
