@@ -96,8 +96,8 @@ function Navigation({ activeSection = 'about' }) {
       <Link to="/#about" className={activeSection === 'about' ? 'active' : ''}>About</Link>
       <Link to="/#films" className={activeSection === 'films' ? 'active' : ''}>Films</Link>
       <Link to="/#stories" className={activeSection === 'stories' ? 'active' : ''}>Stories</Link>
-      <Link to="/#practice" className={activeSection === 'practice' ? 'active' : ''}>Practice</Link>
-      <Link to="/#archive" className={activeSection === 'archive' ? 'active' : ''}>Archive</Link>
+      <Link to="/practice" className={activeSection === 'practice' ? 'active' : ''}>Practice</Link>
+      <Link to="/archive" className={activeSection === 'archive' ? 'active' : ''}>Archive</Link>
     </nav>
   )
 }
@@ -420,7 +420,7 @@ function PracticePage() {
   return (
     <main className="page-shell">
       <section className="page-section">
-        <h2>Tập tành</h2>
+        <h2>Practice</h2>
         <div className="practice-grid page-practice-grid">
           {practiceImages.map((image, index) => (
             <img key={index} src={image} alt="" />
@@ -474,7 +474,7 @@ function App() {
   const location = useLocation()
   const [selectedArchiveImage, setSelectedArchiveImage] = useState(null)
   const [activeSection, setActiveSection] = useState('about')
-  const isDetailPage = location.pathname.startsWith('/films/') || location.pathname === '/archive'
+  const isDetailPage = location.pathname.startsWith('/films/') || location.pathname === '/archive' || location.pathname === '/practice'
 
   useEffect(() => {
     if (location.pathname === '/' && location.hash) {
@@ -486,6 +486,14 @@ function App() {
   }, [location.pathname, location.hash])
 
   useEffect(() => {
+    if (location.pathname === '/practice') {
+      setActiveSection('practice')
+      return
+    }
+    if (location.pathname === '/archive') {
+      setActiveSection('archive')
+      return
+    }
     if (location.pathname !== '/') return
 
     const sectionIds = ['about', 'films', 'stories', 'practice', 'archive']
