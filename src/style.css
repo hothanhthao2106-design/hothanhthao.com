@@ -127,24 +127,26 @@ nav a:hover { color: #db2727; }
 
 .intro-section {
   display: grid;
-  grid-template-columns: minmax(220px, .8fr) minmax(0, 1.2fr);
+ grid-template-columns: minmax(180px, .65fr) minmax(0, 1.35fr);
   align-items: center;
-  gap: clamp(32px, 8vw, 130px);
-  padding: 64px 8vw;
-  border-bottom: 1px solid #dedbd5;
+ gap: clamp(28px, 5vw, 64px);
+ max-width: 1100px;
+ margin: 0 auto;
+ padding: 48px 6vw;
+ border-bottom: 1px solid #dedbd5;
 }
 .intro-media { min-width: 0; }
 .intro-image {
-  width: 100%;
-  max-height: 580px;
-  aspect-ratio: 4 / 5;
-  object-fit: cover;
-  object-position: center;
+ width: 100%;
+ max-height: 420px;
+ aspect-ratio: 4 / 5;
+ object-fit: cover;
+ object-position: center;
 }
 .intro-content {
-  max-width: 720px;
-  font-size: clamp(14px, 1.15vw, 17px);
-  line-height: 1.8;
+ max-width: 620px;
+ font-size: clamp(12px, 1vw, 14px);
+ line-height: 1.75;
 }
 .intro-content p:last-child { margin-bottom: 0; }
 
@@ -239,8 +241,8 @@ nav a:hover { color: #db2727; }
   display: block;
   margin-bottom: 14px;
   color: #cf2428;
-  font: 500 11px "DM Mono", monospace;
-  text-transform: uppercase;
+  font: 500 11px "Montserrat", Arial, sans-serif;
+  text-transform: none;
 }
 .film-copy p {
   max-width: 275px;
@@ -348,8 +350,8 @@ nav a:hover { color: #db2727; }
   display: block;
   margin-bottom: 14px;
   color: #cf2428;
-  font: 500 11px "DM Mono", monospace;
-  text-transform: uppercase;
+  font: 500 11px "Montserrat", Arial, sans-serif;
+  text-transform: none;
 }
 
 .film-awards-detail {
@@ -363,6 +365,7 @@ nav a:hover { color: #db2727; }
   align-self: center;
   margin: 0;
   padding: 0 8px;
+  font-family: "Montserrat", Arial, sans-serif;
   font-size: 12px;
   line-height: 1.5;
   white-space: pre-line;
@@ -649,8 +652,11 @@ footer {
     padding: 36px 6vw;
   }
   .intro-image {
-    width: min(100%, 420px);
-    max-height: 520px;
+    width: min(82%, 340px);
+    max-height: 380px;
+  }
+  .intro-content {
+    font-size: 12.5px;
   }
 
   .film-row {
