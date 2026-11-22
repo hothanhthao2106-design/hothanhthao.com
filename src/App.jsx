@@ -90,7 +90,7 @@ const practiceImages = [
   'https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?auto=format&fit=crop&w=600&q=80',
 ]
 
-function SiteHeader({ isDetailPage = false }) {
+function SiteHeader({ isDetailPage = false, activeSection = 'about' }) {
   return (
     <header className={`hero ${isDetailPage ? 'hero-detail' : ''}`} id="top">
       <div className="hero-name">
@@ -99,11 +99,11 @@ function SiteHeader({ isDetailPage = false }) {
       </div>
 
       <nav aria-label="Main navigation">
-        <Link to="/#about">About</Link>
-        <Link to="/#films">Films</Link>
-        <Link to="/#stories">Stories</Link>
-        <Link to="/#practice">Practice</Link>
-        <Link to="/#donate" className="nav-support">Donate</Link>
+        <Link to="/#about" className={activeSection === 'about' ? 'active' : ''}>About</Link>
+        <Link to="/#films" className={activeSection === 'films' ? 'active' : ''}>Films</Link>
+        <Link to="/#stories" className={activeSection === 'stories' ? 'active' : ''}>Stories</Link>
+        <Link to="/#practice" className={activeSection === 'practice' ? 'active' : ''}>Practice</Link>
+        <Link to="/#donate" className={`nav-support ${activeSection === 'donate' ? 'active' : ''}`}>Donate</Link>
       </nav>
 
       {!isDetailPage && (
@@ -437,6 +437,7 @@ function SupportPage() {
 function App() {
   const location = useLocation()
   const [selectedArchiveImage, setSelectedArchiveImage] = useState(null)
+  const [activeSection, setActiveSection] = useState('about')
   const isDetailPage = location.pathname.startsWith('/films/') || location.pathname === '/archive'
 
   useEffect(() => {
@@ -448,9 +449,29 @@ function App() {
     }
   }, [location.pathname, location.hash])
 
+  useEffect(() => {
+    if (location.pathname !== '/') return
+
+    const sectionIds = ['about', 'films', 'stories', 'practice', 'donate']
+    const updateActiveSection = () => {
+      let current = 'about'
+      for (const sectionId of sectionIds) {
+        const section = document.getElementById(sectionId)
+        if (section && section.getBoundingClientRect().top <= 180) {
+          current = sectionId
+        }
+      }
+      setActiveSection(current)
+    }
+
+    updateActiveSection()
+    window.addEventListener('scroll', updateActiveSection, { passive: true })
+    return () => window.removeEventListener('scroll', updateActiveSection)
+  }, [location.pathname])
+
   return (
     <>
-      <SiteHeader isDetailPage={isDetailPage} />
+      <SiteHeader isDetailPage={isDetailPage} activeSection={activeSection} />
       <Routes>
         <Route path="/" element={<HomePage onOpenArchiveImage={setSelectedArchiveImage} />} />
         <Route path="/films/:filmSlug" element={<FilmDetailPage />} />
