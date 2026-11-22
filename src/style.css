@@ -192,7 +192,8 @@ nav a.active::after {
 main {
  position: relative;
  z-index: 20;
- background: transparent;
+ background: #F3F0E9;
+ color: #242321;
  padding-right: clamp(150px, 12vw, 170px);
 }
 
@@ -229,8 +230,11 @@ main {
 .films {
  position: relative;
  z-index: 20;
- background: transparent;
+ background: #F3F0E9;
+ color: #242321;
  padding: 0 4vw;
+ border-top: 1px solid #d8d3c8;
+ border-bottom: 1px solid #d8d3c8;
 }
 .film-row {
   display: grid;
@@ -325,6 +329,11 @@ main {
   font: 500 12px "Montserrat", Arial, sans-serif;
   text-transform: none;
 }
+.film-copy,
+.film-copy p,
+.film-copy h2 {
+  color: #242321;
+}
 .film-copy p {
   max-width: 310px;
   color: #292825;
@@ -366,6 +375,12 @@ main {
 }
 
 .page-shell {
+  position: relative;
+  z-index: 20;
+  min-height: 100vh;
+  background: #F3F0E9;
+  color: #242321;
+  border-top: 1px solid #d8d3c8;
   padding: 32px 4vw 48px;
 }
 
@@ -470,8 +485,9 @@ main {
 .three-columns {
  position: relative;
  z-index: 20;
- background: transparent;
- display: grid;
+background: #F3F0E9;
+color: #242321;
+display: grid;
  grid-template-columns: 1fr;
   margin: 0 4vw;
   border-bottom: 1px solid #dedbd5;
@@ -563,8 +579,8 @@ main {
   line-height: 1.4;
 }
 .archive-copy small {
-  color: #777;
-  font-size: 10px;
+  color: #656157;
+  font-size: 10.5px;
 }
 
 .landing-archive-showcase {
@@ -699,7 +715,9 @@ main {
 .support {
  position: relative;
  z-index: 20;
- background: transparent;
+background: #F3F0E9;
+color: #242321;
+border-top: 1px solid #d8d3c8;
  display: grid;
   grid-template-columns: 1.35fr 110px 1fr 1fr;
   gap: 28px;
