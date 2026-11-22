@@ -90,7 +90,19 @@ const practiceImages = [
   'https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?auto=format&fit=crop&w=600&q=80',
 ]
 
-function SiteHeader({ isDetailPage = false, activeSection = 'about' }) {
+function Navigation({ activeSection = 'about' }) {
+  return (
+    <nav aria-label="Main navigation">
+      <Link to="/#about" className={activeSection === 'about' ? 'active' : ''}>About</Link>
+      <Link to="/#films" className={activeSection === 'films' ? 'active' : ''}>Films</Link>
+      <Link to="/#stories" className={activeSection === 'stories' ? 'active' : ''}>Stories</Link>
+      <Link to="/#practice" className={activeSection === 'practice' ? 'active' : ''}>Practice</Link>
+      <Link to="/#donate" className={`nav-support ${activeSection === 'donate' ? 'active' : ''}`}>Donate</Link>
+    </nav>
+  )
+}
+
+function SiteHeader({ isDetailPage = false }) {
   return (
     <header className={`hero ${isDetailPage ? 'hero-detail' : ''}`} id="top">
       <div className="hero-name">
@@ -98,13 +110,6 @@ function SiteHeader({ isDetailPage = false, activeSection = 'about' }) {
         <em>Filmmaker</em>
       </div>
 
-      <nav aria-label="Main navigation">
-        <Link to="/#about" className={activeSection === 'about' ? 'active' : ''}>About</Link>
-        <Link to="/#films" className={activeSection === 'films' ? 'active' : ''}>Films</Link>
-        <Link to="/#stories" className={activeSection === 'stories' ? 'active' : ''}>Stories</Link>
-        <Link to="/#practice" className={activeSection === 'practice' ? 'active' : ''}>Practice</Link>
-        <Link to="/#donate" className={`nav-support ${activeSection === 'donate' ? 'active' : ''}`}>Donate</Link>
-      </nav>
 
       {!isDetailPage && (
         <div className="hero-quote">
@@ -471,7 +476,8 @@ function App() {
 
   return (
     <>
-      <SiteHeader isDetailPage={isDetailPage} activeSection={activeSection} />
+      <SiteHeader isDetailPage={isDetailPage} />
+      <Navigation activeSection={activeSection} />
       <Routes>
         <Route path="/" element={<HomePage onOpenArchiveImage={setSelectedArchiveImage} />} />
         <Route path="/films/:filmSlug" element={<FilmDetailPage />} />
