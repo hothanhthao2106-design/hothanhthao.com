@@ -225,6 +225,19 @@ function IntroSection() {
 }
 
 function HomePage({ onOpenArchiveImage }) {
+  const [archiveOffset, setArchiveOffset] = useState(0)
+
+  useEffect(() => {
+    const timer = window.setInterval(() => {
+      setArchiveOffset((current) => (current + 1) % archive.length)
+    }, 2800)
+
+    return () => window.clearInterval(timer)
+  }, [])
+
+  const rotatingArchiveImages = landingArchiveSlides.map((_, index) => (
+    archive[(archiveOffset + index) % archive.length]
+  ))
 
   return (
     <>
@@ -271,7 +284,7 @@ function HomePage({ onOpenArchiveImage }) {
           <div id="archive">
             <h2>Archive</h2>
             <div className="landing-archive-grid">
-              {landingArchiveSlides.map((image, index) => (
+              {rotatingArchiveImages.map((image, index) => (
                 <button
                   type="button"
                   className="landing-archive-item"

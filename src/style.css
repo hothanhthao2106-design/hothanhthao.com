@@ -639,7 +639,12 @@ display: grid;
   object-fit: cover;
   border: 1px solid #ddd5cd;
   background: #f1efe9;
+  animation: archiveImageFade 700ms ease;
   transition: transform 350ms ease, opacity 350ms ease, filter 350ms ease;
+}
+@keyframes archiveImageFade {
+  from { opacity: 0.45; }
+  to { opacity: 1; }
 }
 .landing-archive-item:hover img {
   transform: scale(1.018);
