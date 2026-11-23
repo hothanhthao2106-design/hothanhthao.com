@@ -161,8 +161,10 @@ function FilmDetailPage() {
             <span className="film-number">{film.number}</span>
             <h2>{film.title}</h2>
             <strong>{film.details}</strong>
-            <p lang="vi">{film.description}</p>
-            {film.descriptionEn ? <p className="film-description-en" lang="en">{film.descriptionEn}</p> : null}
+            <div className="film-detail-description">
+              <p lang="vi">{film.description}</p>
+              {film.descriptionEn ? <p className="film-description-en" lang="en">{film.descriptionEn}</p> : null}
+            </div>
 
             {film.awards ? (
               <div className="film-awards film-awards-detail">
