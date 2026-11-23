@@ -4,6 +4,17 @@ import { useEffect, useRef, useState } from 'react'
 const films = [
   {
     number: '01',
+    slug: 'mot-tam-hinh-thi-thuc',
+    title: 'Một tấm hình thị thực',
+    details: 'Đang phát triển · Short · Drama',
+    description: 'Một người phụ nữ nông thôn cùng hai đứa con đến thành phố để chụp lại ảnh visa. Cô cố gắng kiểm soát diện mạo của mình, trong khi thế giới xung quanh dần hé lộ sự mong manh của quyền lực và sự chắc chắn.',
+    descriptionEn: 'A rural woman and her two children travel to the city to retake a visa photo, obsessively adjusting her appearance, while her world reveals how fragile control and certainty truly are.',
+    image: '/Images/A visa photo/Avisaphoto.jpg',
+    images: ['/Images/A visa photo/Avisaphoto.jpg', '/Images/A visa photo/Cover.png'],
+    awards: 'Top 5 projects at Short Film Incubator – Objectifs and Momo Film Co. (Singapore)',
+  },
+  {
+    number: '02',
     slug: 'diem-bao',
     title: 'Omen (Điềm Báo)',
     details: '2025 · Short · Drama',
@@ -11,10 +22,10 @@ const films = [
     descriptionEn: 'Convinced that her erotic dreams about a mysterious stranger are bringing misfortune upon her son, as a fortune teller has foretold, a desperate widow wages a battle against her own desires, teetering on the fragile boundary between superstition, lust, and guilt.',
     image: '/Images/Omen/Omen4.png',
     images: ['/Images/Omen/Omen.png', '/Images/Omen/Omen2.png', '/Images/Omen/Omen3.png', '/Images/Omen/Omen4.png', '/Images/Omen/omen 4.png'],
-    awards: 'Top 5 projects at Short Film Incubator – Objectifs and Momo Film Co. (Singapore)\nIn competition: 28th Short Shorts Film Festival & Asia (Japan); 20th Jogja-NETPAC Asian Film Festival (Jogjakarta, Indonesia); 16th Bengaluru International Film Festival (Bengaluru, India); 5th VITA ShortS Shanghai Film Festival (Shanghai, China)\nScreened at Cinema D’IDEA (Rome, Italy)',
+    awards: 'In competition: 28th Short Shorts Film Festival & Asia (Japan); 20th Jogja-NETPAC Asian Film Festival (Jogjakarta, Indonesia); 16th Bengaluru International Film Festival (Bengaluru, India); 5th VITA ShortS Shanghai Film Festival (Shanghai, China)\nScreened at Cinema D’IDEA (Rome, Italy)',
   },
   {
-    number: '02',
+    number: '03',
     slug: 'duong-cao-toc',
     title: 'Đường Cao Tốc (Highway – Happy Money)',
     details: '2020 · Short · Drama',
@@ -25,7 +36,7 @@ const films = [
     awards: 'Silver Kite Award for Best Narrative Short (Vietnam)\nShortlisted, Quinzaine des Réalisateurs (France)',
   },
   {
-    number: '03',
+    number: '04',
     slug: 'muon',
     title: 'Ephemera (Muộn)',
     details: '2017 · Short · Drama',
