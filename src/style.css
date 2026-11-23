@@ -1,9 +1,9 @@
-@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;1,500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Cormorant+Garamond:ital,wght@0,500;1,500&display=swap');
 
 :root {
-  font-family: Arial, sans-serif;
-  color: #171715;
-  background: #F3F0E9;
+  font-family: "Inter", "Helvetica Neue", Arial, sans-serif;
+  color: #111111;
+  background: #f7f7f5;
   line-height: 1.45;
 }
 
@@ -11,24 +11,24 @@
 html { scroll-behavior: smooth; }
 body {
   margin: 0;
-  background-color: #F3F0E9;
-  background-image:
-    radial-gradient(rgba(70, 58, 38, 0.028) 0.55px, transparent 0.75px),
-    radial-gradient(rgba(255, 255, 255, 0.18) 0.55px, transparent 0.75px);
-  background-size: 13px 15px, 17px 19px;
-  background-position: 0 0, 6px 8px;
+  background: #f7f7f5;
 }
 
 #about, #films, #stories, #practice, #archive, #donate {
   scroll-margin-top: 72px;
 }
 a { color: inherit; text-decoration: none; }
+::selection {
+  background: #111111;
+  color: #ffffff;
+}
 img { display: block; max-width: 100%; height: auto; object-fit: contain; }
 
 h1, h2, p { margin-top: 0; }
 h1, h2 {
-  font-family: "Playfair Display", Georgia, serif;
+  font-family: "Inter", "Helvetica Neue", Arial, sans-serif;
   font-weight: 500;
+  letter-spacing: -0.035em;
 }
 
 .hero {
@@ -51,9 +51,9 @@ h1, h2 {
   max-height: none;
   position: relative;
   z-index: 10;
-  background: #F3F0E9;
-  color: #171715;
-  border-bottom: 1px solid #d8d3c8;
+  background: #ffffff;
+  color: #111111;
+  border-bottom: 1px solid #d7d7d2;
 }
 
 .hero-name {
@@ -66,7 +66,8 @@ h1, h2 {
   align-items: flex-start;
   justify-content: center;
   text-align: left;
-  font: 500 26px "Montserrat", Arial, sans-serif;
+  font: 600 24px "Inter", "Helvetica Neue", Arial, sans-serif;
+  letter-spacing: -0.04em;
 }
 
 .hero-detail .hero-name {
@@ -92,7 +93,7 @@ h1, h2 {
   margin-top: 3px;
   font-size: 14px;
   font-weight: 400;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
 }
 .hero:not(.hero-detail) .hero-name em {
@@ -120,7 +121,8 @@ nav {
   backdrop-filter: none;
   -webkit-backdrop-filter: none;
   overflow: visible;
-  font: 500 15px "Playfair Display", Georgia, serif;
+  font: 500 13px "Inter", "Helvetica Neue", Arial, sans-serif;
+  letter-spacing: -0.01em;
 }
 
 .hero-detail nav {
@@ -207,14 +209,15 @@ nav a.active::after {
 }
 .tagline {
   margin: 0 0 12px;
-  font: 400 clamp(24px, 2.5vw, 40px) / 1.05 Arial, Helvetica, sans-serif;
-  letter-spacing: -0.04em;
+  font: 500 clamp(30px, 3.2vw, 48px) / 1.02 "Cormorant Garamond", Georgia, serif;
+  letter-spacing: -0.02em;
   color: #F3F0E9;
   text-shadow: 0 3px 14px rgba(0, 0, 0, 0.82);
 }
 .hero-quote small {
-  font: 9px "DM Mono", monospace;
-  letter-spacing: .08em;
+  font: 400 9px "IBM Plex Mono", monospace;
+  letter-spacing: .16em;
+  text-transform: uppercase;
   color: #F3F0E9;
   text-shadow: 0 2px 10px rgba(0, 0, 0, 0.82);
 }
@@ -222,7 +225,7 @@ nav a.active::after {
 main {
  position: relative;
  z-index: 20;
- background: #F3F0E9;
+ background: #f7f7f5;
  color: #242321;
  padding-right: clamp(150px, 12vw, 170px);
 }
@@ -230,8 +233,10 @@ main {
 .intro-section {
  position: relative;
  z-index: 20;
- background: #F3F0E9;
+ background: #f7f7f5;
  display: grid;
+border-top: 1px solid #d7d7d2;
+border-bottom: 1px solid #d7d7d2;
  grid-template-columns: minmax(180px, .65fr) minmax(0, 1.35fr);
   align-items: center;
  gap: clamp(28px, 5vw, 64px);
@@ -260,8 +265,8 @@ main {
 .films {
  position: relative;
  z-index: 20;
- background: #F3F0E9;
- color: #242321;
+ background: #f7f7f5;
+ color: #111111;
  padding: 0 4vw;
  border-top: 1px solid #d8d3c8;
  border-bottom: 1px solid #d8d3c8;
@@ -281,14 +286,17 @@ main {
   padding-top: 28px;
   padding-bottom: 28px;
   border-top: 1px solid #dedbd5;
-  border-bottom: 2px solid rgba(207, 36, 40, 0.45);
+  border-bottom: 2px solid #111111;
 }
 .film-featured .film-copy {
   align-self: center;
 }
 .film-featured .film-copy h2 {
-  font-size: clamp(30px, 3vw, 52px);
-  line-height: 0.95;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(34px, 3.6vw, 58px);
+  font-weight: 500;
+  line-height: 0.92;
+  letter-spacing: -0.025em;
 }
 .film-featured .film-copy p {
   max-width: 340px;
@@ -337,7 +345,9 @@ main {
   display: block;
   margin-bottom: 15px;
   color: #cf2428;
-  font: 11px "DM Mono", monospace;
+  font: 500 10px "IBM Plex Mono", monospace;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
 }
 .film-copy h2 {
   margin-bottom: 16px;
@@ -356,8 +366,10 @@ main {
   display: block;
   margin-bottom: 14px;
   color: #cf2428;
-  font: 500 12px "Montserrat", Arial, sans-serif;
-  text-transform: none;
+  font: 500 10.5px "IBM Plex Mono", monospace;
+  line-height: 1.55;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
 }
 .film-copy,
 .film-copy p,
@@ -366,9 +378,9 @@ main {
 }
 .film-copy p {
   max-width: 310px;
-  color: #292825;
-  font-size: 13.5px;
-  line-height: 1.7;
+  color: #242424;
+  font-size: 14px;
+  line-height: 1.65;
 }
 .film-row > img {
   width: 100%;
@@ -408,9 +420,9 @@ main {
   position: relative;
   z-index: 20;
   min-height: 100vh;
-  background: #F3F0E9;
-  color: #242321;
-  border-top: 1px solid #d8d3c8;
+  background: #f7f7f5;
+  color: #111111;
+  border-top: 1px solid #d7d7d2;
   padding: 32px 4vw 48px;
 }
 
@@ -532,17 +544,20 @@ main {
 
 .film-detail-copy h2 {
   margin-bottom: 12px;
-  font-size: clamp(32px, 4vw, 56px);
-  line-height: 0.95;
+ font-family: "Cormorant Garamond", Georgia, serif;
+ font-size: clamp(36px, 4.5vw, 64px);
+ line-height: 0.92;
+ letter-spacing: -0.025em;
 }
 
 .film-detail-copy strong {
   display: block;
   margin-bottom: 14px;
   color: #cf2428;
-  font: 500 12px "Montserrat", Arial, sans-serif;
+  font: 500 10.5px "IBM Plex Mono", monospace;
   line-height: 1.65;
-  text-transform: none;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
 }
 
 .film-awards-detail {
@@ -557,8 +572,10 @@ main {
   margin: 0;
   padding: 0 8px;
   color: #34322e;
-  font-family: "Montserrat", Arial, sans-serif;
-  font-size: 12.5px;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 11.5px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
   line-height: 1.65;
   white-space: pre-line;
 }
@@ -571,9 +588,10 @@ main {
 .three-columns {
  position: relative;
  z-index: 20;
-background: #F3F0E9;
-color: #242321;
+background: #f7f7f5;
+color: #111111;
 display: grid;
+border-top: 1px solid #d7d7d2;
  grid-template-columns: 1fr;
   margin: 0 4vw;
   border-bottom: 1px solid #dedbd5;
@@ -589,8 +607,9 @@ display: grid;
 
 .three-columns h2 {
   margin-bottom: 26px;
-  font-size: 20px;
-  text-transform: uppercase;
+ font-size: 18px;
+ letter-spacing: -0.02em;
+ text-transform: uppercase;
 }
 #stories {
  text-align: center;
@@ -609,12 +628,17 @@ display: grid;
   padding: 7px 0;
   border-bottom: 1px solid #d9d4c8;
   color: #242320;
-  font-size: 13px;
+  font-family: "Inter", "Helvetica Neue", Arial, sans-serif;
+  font-size: 13.5px;
   line-height: 1.6;
   transition: color 300ms ease, opacity 300ms ease;
 }
 .text-link:hover, .more:hover { color: #cf2428; }
-.text-link small { color: #656157; font-size: 10.5px; }
+.text-link small {
+ color: #656565;
+ font: 400 10px "IBM Plex Mono", monospace;
+ letter-spacing: 0.12em;
+}
 
 .archive-list {
   display: grid;
@@ -646,7 +670,7 @@ display: grid;
   max-width: 220px;
   height: 150px;
   object-fit: cover;
-  border: 1px solid #ddd5cd;
+  border: 0;
   background: #f1efe9;
 }
 .archive-item-compact .archive-thumb {
@@ -702,7 +726,7 @@ display: grid;
   width: 100%;
   height: clamp(220px, 24vw, 340px);
   object-fit: cover;
-  border: 1px solid #ddd5cd;
+  border: 0;
   background: #f1efe9;
   transition: transform 350ms ease;
 }
@@ -839,7 +863,7 @@ display: grid;
 .support {
  position: relative;
  z-index: 20;
-background: #F3F0E9;
+background: #f7f7f5;
 color: #242321;
 border-top: 1px solid #d8d3c8;
  display: grid;
@@ -849,17 +873,18 @@ border-top: 1px solid #d8d3c8;
   padding: 32px 4vw;
 }
 .support-intro h2 {
-  color: #cf2428;
-  font-size: 22px;
+ color: #111111;
+ font-size: 20px;
   line-height: 1.2;
-  text-transform: uppercase;
+ letter-spacing: -0.02em;
+ text-transform: uppercase;
 }
 .support-intro h2 strong,
 .support-intro h2 b {
   color: #cf2428;
 }
 .support-intro h2 em { white-space: nowrap; }
-.support-intro p { max-width: 310px; color: #292825; font-size: 13px; line-height: 1.65; }
+.support-intro p { max-width: 310px; color: #242424; font-size: 14px; line-height: 1.65; }
 
 .payment-qr {
   display: flex;
@@ -873,11 +898,15 @@ border-top: 1px solid #d8d3c8;
   height: 110px;
   object-fit: contain;
   background: #fff;
-  border: 1px solid #dedbd5;
+  border: 1px solid #d7d7d2;
   padding: 8px;
 }
-.payment { font-size: 12px; }
-.payment strong { font-size: 12px; }
+.payment { font-size: 13px; }
+.payment strong {
+  font: 500 10.5px "IBM Plex Mono", monospace;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
 .payment p {
   margin: 0 0 6px;
   color: #292825;
@@ -922,8 +951,8 @@ footer {
   display: flex;
   justify-content: space-between;
   padding: 18px clamp(150px, 12vw, 170px) 18px 4vw;
-  border-top: 1px solid #dedbd5;
-  color: #5f5b52;
+  border-top: 1px solid #d7d7d2;
+  color: #656565;
   font-size: 11px;
 }
 
