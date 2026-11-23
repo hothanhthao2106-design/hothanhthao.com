@@ -426,7 +426,9 @@ function HomePage({ onOpenArchiveImage }) {
             <h2>Đồng hành cùng dự án</h2>
             <p>
               Nếu bạn thích dự án của tôi hoặc thích cách tôi tò mò về cuộc sống, hãy góp một phần nhỏ để tôi có thể tiếp tục kể các câu chuyện và chia sẻ tới bạn.
-
+            </p>
+            <p className="support-description-en" lang="en">
+              If you enjoy my projects or share my curiosity about life, a small contribution would help me continue telling stories and sharing them with you.
             </p>
           </div>
 
