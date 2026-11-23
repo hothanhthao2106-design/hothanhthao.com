@@ -272,6 +272,8 @@ line-height: 1.75;
   margin-top: 10px;
   padding-top: 0;
   border-top: 0;
+  border-left: 1px solid #d7d7d2;
+  padding-left: 12px;
 }
 .bio-block-en p {
   color: #53534f;
@@ -325,11 +327,12 @@ line-height: 1.75;
 .bio-block-en [lang="en"],
 .film-description-en,
 .film-detail-copy .film-description-en {
-  color: #565650;
-  font-size: 0.93em;
+  color: #686860;
+  font-size: 0.88em;
   font-weight: 400;
   font-style: normal;
-  line-height: 1.65;
+  line-height: 1.7;
+  letter-spacing: 0.01em;
 }
 
 .films {
@@ -1085,7 +1088,7 @@ footer {
   .bio-block-en p,
   .film-description-en,
   .film-detail-copy .film-description-en {
-    font-size: 0.93em;
+    font-size: 0.88em;
   }
   .film-description-bilingual,
   .film-detail-description {
