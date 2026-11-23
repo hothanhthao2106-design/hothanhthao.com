@@ -272,8 +272,8 @@ line-height: 1.75;
   margin-top: 10px;
   padding-top: 0;
   border-top: 0;
-  border-left: 1px solid #d7d7d2;
-  padding-left: 12px;
+  border-left: 0;
+  padding-left: 0;
 }
 .bio-block-en p {
   color: #53534f;
