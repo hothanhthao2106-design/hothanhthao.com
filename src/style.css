@@ -280,6 +280,11 @@ line-height: 1.75;
   font-style: normal;
   line-height: 1.65;
 }
+.bio-block-en p + p,
+.film-description-bilingual .film-description-en,
+.film-detail-description .film-description-en {
+  margin-top: 10px;
+}
 .scroll-note {
   display: block;
   margin: 0 0 12px;
@@ -316,9 +321,10 @@ line-height: 1.75;
   scrollbar-width: thin;
   scrollbar-color: #b7b7b1 transparent;
 }
+[lang="en"].bio-block-en,
+.bio-block-en [lang="en"],
 .film-description-en,
 .film-detail-copy .film-description-en {
-  margin-top: 10px;
   color: #565650;
   font-size: 0.93em;
   font-weight: 400;
