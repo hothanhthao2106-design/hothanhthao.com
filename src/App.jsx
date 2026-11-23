@@ -12,7 +12,7 @@ const films = [
     descriptionEn: 'A rural woman and her two children travel to the city to retake a visa photo, obsessively adjusting her appearance, while her world reveals how fragile control and certainty truly are.',
     image: '/Images/A visa photo/Avisaphoto.jpg',
     images: ['/Images/A visa photo/Avisaphoto.jpg', '/Images/A visa photo/Cover.png'],
-    awards: 'Top 5 projects at Short Film Incubator – Objectifs and Momo Film Co. (Singapore)',
+    awards: 'Top 5 selected projects at Short Film Incubator – Objectifs and Momo Film Co. (Singapore)',
   },
   {
     number: '02',
@@ -223,7 +223,7 @@ function IntroSection() {
         <small className="scroll-note" aria-label="Cuộn để đọc tiếng Anh">Scroll for English</small>
         <div className="bio-block">
           <p lang="vi">
-            Sinh tại Hà Nội, Việt Nam, Hồ Thanh Thảo lấy cảm hứng làm phim từ đời sống thường nhật của con người miền Bắc Việt Nam. Cô quan tâm đến những cảm xúc và suy nghĩ thường không được nói thành lời — những hiện diện tinh tế nhưng dai dẳng trong cuộc sống hằng ngày. Các tác phẩm của cô thường khai thác những khoảnh khắc thỏa hiệp, nơi bản năng bị kìm nén và sự ngây thơ dần phai nhạt.
+            Sinh tại Hà Nội, Việt Nam, Hồ Thanh Thảo lấy cảm hứng làm phim từ đời sống thường nhật của con người miền Bắc Việt Nam. Cô quan tâm đến những cảm xúc và suy nghĩ thường không được nói thành lời — những hiện diện tinh tế nhưng dai dẳng trong cuộc sống. Các tác phẩm của cô thường khai thác những khoảnh khắc thỏa hiệp, nơi bản năng bị kìm nén và sự ngây thơ dần phai nhạt.
           </p>
           <p lang="vi">
             Thảo tốt nghiệp Học viện Ngân hàng nhưng bắt đầu tự học làm phim và tích lũy kinh nghiệm thực tế từ khi còn là sinh viên đại học. Sau khi tốt nghiệp, cô chuyển hướng sự nghiệp để theo đuổi làm phim độc lập. Trong suốt quá trình này, cô thường tự viết kịch bản, đồng thời chủ động tìm kiếm nguồn vốn và tập hợp ê-kíp để hiện thực hóa các dự án. Bên cạnh công việc đạo diễn, cô cũng đảm nhận nhiều vai trò khác nhau trong cả phim truyện và các dự án phim tài liệu thương mại.
@@ -411,13 +411,13 @@ function HomePage({ onOpenArchiveImage }) {
                 <PracticeCrossfade key={slot} images={practiceImages} slot={slot} />
               ))}
             </div>
-            <Link className="more" to="/#practice">Xem tất cả →</Link>
+            <Link className="more" to="/practice">Xem tất cả →</Link>
           </div>
 
           <div id="archive">
             <h2>Archive</h2>
             <ArchiveCarousel images={archive} onOpen={onOpenArchiveImage} />
-            <Link className="more" to="/#archive">Xem tất cả →</Link>
+            <Link className="more" to="/archive">Xem tất cả →</Link>
           </div>
         </section>
 
@@ -505,8 +505,8 @@ function PracticePage() {
       <section className="page-section">
         <h2>Practice</h2>
         <div className="practice-grid page-practice-grid">
-          {[0, 1, 2, 3].map((slot) => (
-            <PracticeCrossfade key={slot} images={practiceImages} slot={slot} />
+          {practiceImages.map((image, index) => (
+            <img key={image} src={image} alt={`Practice ${index + 1}`} />
           ))}
         </div>
       </section>
@@ -557,7 +557,7 @@ function App() {
   const location = useLocation()
   const [selectedArchiveImage, setSelectedArchiveImage] = useState(null)
   const [activeSection, setActiveSection] = useState('about')
-  const isDetailPage = location.pathname.startsWith('/films/')
+  const isDetailPage = location.pathname.startsWith('/films/') || ['/stories', '/practice', '/archive'].includes(location.pathname)
 
   useEffect(() => {
     if (location.pathname === '/' && location.hash) {
@@ -569,6 +569,18 @@ function App() {
   }, [location.pathname, location.hash])
 
   useEffect(() => {
+    if (location.pathname === '/practice') {
+      setActiveSection('practice')
+      return
+    }
+    if (location.pathname === '/archive') {
+      setActiveSection('archive')
+      return
+    }
+    if (location.pathname === '/stories') {
+      setActiveSection('stories')
+      return
+    }
     if (location.pathname !== '/') return
 
     const sectionIds = ['about', 'films', 'stories', 'practice', 'archive']
@@ -596,6 +608,8 @@ function App() {
         <Route path="/" element={<HomePage onOpenArchiveImage={setSelectedArchiveImage} />} />
         <Route path="/films/:filmSlug" element={<FilmDetailPage />} />
         <Route path="/stories" element={<StoriesPage />} />
+        <Route path="/practice" element={<PracticePage />} />
+        <Route path="/archive" element={<ArchivePage onOpenArchiveImage={setSelectedArchiveImage} />} />
         <Route path="/support" element={<SupportPage />} />
       </Routes>
 
