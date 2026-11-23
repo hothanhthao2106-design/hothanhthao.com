@@ -6,6 +6,7 @@ const films = [
     number: '01',
     slug: 'mot-tam-hinh-thi-thuc',
     title: 'Một tấm hình thị thực',
+    englishTitle: 'A Visa Photo',
     details: 'Đang phát triển · Short · Drama',
     description: 'Một người phụ nữ nông thôn cùng hai đứa con đến thành phố để chụp lại ảnh visa. Cô cố gắng kiểm soát diện mạo của mình, trong khi thế giới xung quanh dần hé lộ sự mong manh của quyền lực và sự chắc chắn.',
     descriptionEn: 'A rural woman and her two children travel to the city to retake a visa photo, obsessively adjusting her appearance, while her world reveals how fragile control and certainty truly are.',
@@ -16,7 +17,8 @@ const films = [
   {
     number: '02',
     slug: 'diem-bao',
-    title: 'Omen (Điềm Báo)',
+    title: 'Điềm Báo',
+    englishTitle: 'Omen',
     details: '2025 · Short · Drama',
     description: 'Tin rằng những giấc mơ nhục dục về một người lạ bí ẩn đang mang lại bất hạnh cho con trai mình như lời thầy bói đã phán, một góa phụ tuyệt vọng bước vào cuộc chiến chống lại chính những khao khát của bản thân, chênh vênh trên ranh giới mong manh giữa mê tín, dục vọng và mặc cảm tội lỗi.',
     descriptionEn: 'Convinced that her erotic dreams about a mysterious stranger are bringing misfortune upon her son, as a fortune teller has foretold, a desperate widow wages a battle against her own desires, teetering on the fragile boundary between superstition, lust, and guilt.',
@@ -27,7 +29,8 @@ const films = [
   {
     number: '03',
     slug: 'duong-cao-toc',
-    title: 'Đường Cao Tốc (Highway – Happy Money)',
+    title: 'Đường Cao Tốc',
+    englishTitle: 'Highway – Happy Money',
     details: '2020 · Short · Drama',
     description: 'Sau nhiều tháng không được trả lương, một nhân viên tín dụng trẻ và thiếu kinh nghiệm buộc phải đánh một canh bạc đầy rủi ro để tìm kiếm khách hàng trong địa bàn do các băng nhóm cho vay nặng lãi kiểm soát.',
     descriptionEn: 'After months of going unpaid, a young and inexperienced loan officer is forced to take a risky gamble in search of clients within territory controlled by illegal lending gangs.',
@@ -38,7 +41,8 @@ const films = [
   {
     number: '04',
     slug: 'muon',
-    title: 'Ephemera (Muộn)',
+    title: 'Muộn',
+    englishTitle: 'Ephemera',
     details: '2017 · Short · Drama',
     description: 'Trong một buổi nhậu đêm muộn, một cô gái trẻ bất ngờ trở nên thân mật với một tay giang hồ nguy hiểm ngay trước mắt người bạn trai bất lực, đẩy cả ba vào một hành trình căng thẳng và khó lường suốt đêm đó.',
     descriptionEn: 'During a late-night drinking session, a young woman unexpectedly grows intimate with a dangerous gangster right before the eyes of her helpless boyfriend, setting the three of them on a tense and unpredictable course through the night.',
@@ -162,6 +166,7 @@ function FilmDetailPage() {
             <h2>{film.title}</h2>
             <strong>{film.details}</strong>
             <div className="film-detail-description">
+              <small className="scroll-note">Scroll for English</small>
               <p lang="vi">{film.description}</p>
               {film.descriptionEn ? <p className="film-description-en" lang="en">{film.descriptionEn}</p> : null}
             </div>
@@ -215,6 +220,7 @@ function IntroSection() {
       </div>
 
       <div className="intro-content">
+        <small className="scroll-note" aria-label="Cuộn để đọc tiếng Anh">Scroll for English</small>
         <div className="bio-block">
           <p lang="vi">
             Sinh tại Hà Nội, Việt Nam, Hồ Thanh Thảo lấy cảm hứng làm phim từ đời sống thường nhật của con người miền Bắc Việt Nam. Cô quan tâm đến những cảm xúc và suy nghĩ thường không được nói thành lời — những hiện diện tinh tế nhưng dai dẳng trong cuộc sống hằng ngày. Các tác phẩm của cô thường khai thác những khoảnh khắc thỏa hiệp, nơi bản năng bị kìm nén và sự ngây thơ dần phai nhạt.
@@ -269,6 +275,7 @@ function FilmCrossfade({ film, className = '' }) {
         src={images[activeIndex]}
         alt={film.title}
       />
+      {film.englishTitle ? <span className="film-image-caption">{film.englishTitle}</span> : null}
     </div>
   )
 }
@@ -364,6 +371,7 @@ function HomePage({ onOpenArchiveImage }) {
                 <h2><Link to={`/films/${film.slug}`}>{film.title}</Link></h2>
                 <strong>{film.details}</strong>
                 <div className="film-description-bilingual">
+                  <small className="scroll-note">Scroll for English</small>
                   <p lang="vi">{film.description}</p>
                   {film.descriptionEn ? <p className="film-description-en" lang="en">{film.descriptionEn}</p> : null}
                 </div>
@@ -458,6 +466,7 @@ function FilmsPage() {
                 <h3>{film.title}</h3>
                 <strong>{film.details}</strong>
                 <div className="film-description-bilingual">
+                  <small className="scroll-note">Scroll for English</small>
                   <p lang="vi">{film.description}</p>
                   {film.descriptionEn ? <p className="film-description-en" lang="en">{film.descriptionEn}</p> : null}
                 </div>
