@@ -4,45 +4,36 @@ import { useEffect, useRef, useState } from 'react'
 const films = [
   {
     number: '01',
-    slug: 'mot-tam-hinh-thi-thuc',
-    title: 'Một tấm hình thị thực',
-    details: 'Đang phát triển · Phim ngắn · Tìm kiếm đối tác tài trợ và sản xuất.',
-    description: 'Một người phụ nữ nông thôn cùng hai đứa con đến thành phố để chụp lại ảnh visa. Tin rằng tấm ảnh là nguyên nhân khiến hồ sơ trước bị từ chối, cô cố kiểm soát tối đa diện mạo của mình, trong khi thế giới xung quanh ngày một trở nên mong manh và bất định.',
-    image: '/Images/A visa photo/Avisaphoto.jpg',
-    images: ['/Images/A visa photo/Avisaphoto.jpg', '/Images/A visa photo/Cover.png'],
-    awards: 'Top 5 dự án phát triển tại Short Film Incubator – chương trình do Objectif và Momo Film Co. (Singapore)',
+    slug: 'diem-bao',
+    title: 'Omen (Điềm Báo)',
+    details: '2025 · Short · Drama',
+    description: 'Tin rằng những giấc mơ nhục dục về một người lạ bí ẩn đang mang lại bất hạnh cho con trai mình như lời thầy bói đã phán, một góa phụ tuyệt vọng bước vào cuộc chiến chống lại chính những khao khát của bản thân, chênh vênh trên ranh giới mong manh giữa mê tín, dục vọng và mặc cảm tội lỗi.',
+    descriptionEn: 'Convinced that her erotic dreams about a mysterious stranger are bringing misfortune upon her son, as a fortune teller has foretold, a desperate widow wages a battle against her own desires, teetering on the fragile boundary between superstition, lust, and guilt.',
+    image: '/Images/Omen/Omen4.png',
+    images: ['/Images/Omen/Omen.png', '/Images/Omen/Omen2.png', '/Images/Omen/Omen3.png', '/Images/Omen/Omen4.png', '/Images/Omen/omen 4.png'],
+    awards: 'Top 5 projects at Short Film Incubator – Objectifs and Momo Film Co. (Singapore)\nIn competition: 28th Short Shorts Film Festival & Asia (Japan); 20th Jogja-NETPAC Asian Film Festival (Jogjakarta, Indonesia); 16th Bengaluru International Film Festival (Bengaluru, India); 5th VITA ShortS Shanghai Film Festival (Shanghai, China)\nScreened at Cinema D’IDEA (Rome, Italy)',
   },
   {
     number: '02',
-    slug: 'diem-bao',
-    title: 'Điềm Báo',
-    details: '2025 · Phim ngắn · Drama',
-    description: 'Cho rằng những giấc mơ nhục cảm về người đàn ông xa lạ chính là nguồn cơn đem lại vận rủi cho con trai như lời thầy bói phán, một góa phụ tuyệt vọng lao vào cuộc chiến chống lại ham muốn của bản thân, đứng trước ranh giới mong manh của mê tín, dục vọng và tội lỗi',
-    image: '/Images/Omen/Omen4.png',
-    images: ['/Images/Omen/Omen.png', '/Images/Omen/Omen2.png', '/Images/Omen/Omen3.png', '/Images/Omen/Omen4.png', '/Images/Omen/omen 4.png'],
-    awards: 'Lựa chọn chính thức · SSFF & ASIA\nLựa chọn chính thức · Jogja-NETPAC\nLựa chọn chính thức · Bengaluru International Film Festival',
+    slug: 'duong-cao-toc',
+    title: 'Đường Cao Tốc (Highway – Happy Money)',
+    details: '2020 · Short · Drama',
+    description: 'Sau nhiều tháng không được trả lương, một nhân viên tín dụng trẻ và thiếu kinh nghiệm buộc phải đánh một canh bạc đầy rủi ro để tìm kiếm khách hàng trong địa bàn do các băng nhóm cho vay nặng lãi kiểm soát.',
+    descriptionEn: 'After months of going unpaid, a young and inexperienced loan officer is forced to take a risky gamble in search of clients within territory controlled by illegal lending gangs.',
+    image: '/Images/Duong Cao Toc/DCT.png',
+    images: ['/Images/Duong Cao Toc/DCT.png', '/Images/Duong Cao Toc/DCT2.png', '/Images/Duong Cao Toc/DCT3.png'],
+    awards: 'Silver Kite Award for Best Narrative Short (Vietnam)\nShortlisted, Quinzaine des Réalisateurs (France)',
   },
   {
     number: '03',
-    slug: 'duong-cao-toc',
-    title: 'Đường Cao Tốc',
-    details: '2020 · Phim ngắn · Drama',
-    description:
-      'Sau nhiều tháng không nhận được lương, một nhân viên tín dụng trẻ, thiếu kinh nghiệm buộc phải liều mình tìm kiếm khách hàng ngay trong địa bàn do các băng nhóm tín dụng đen kiểm soát.ệc.',
-    image: '/Images/Duong Cao Toc/DCT.png',
-    images: ['/Images/Duong Cao Toc/DCT.png', '/Images/Duong Cao Toc/DCT2.png', '/Images/Duong Cao Toc/DCT3.png'],
-    awards: 'Giải Cánh Diều Bạc\nDanh sách rút gọn · Quinzaine des Réalisateurs',
-  },
-  {
-    number: '04',
     slug: 'muon',
-    title: 'Muộn',
-    details: '2017 · Phim ngắn · Drama',
-    description:
-      'Trong một buổi nhậu đêm khuya, một cô gái trẻ bất ngờ trở nên thân mật với một tay giang hồ knguy hiểm ngay trước mắt người bạn trai bất lực của mình, khiến mối quan hệ giữa ba người dần trượt vào một đêm đầy căng thẳng và khó lường.',
+    title: 'Ephemera (Muộn)',
+    details: '2017 · Short · Drama',
+    description: 'Trong một buổi nhậu đêm muộn, một cô gái trẻ bất ngờ trở nên thân mật với một tay giang hồ nguy hiểm ngay trước mắt người bạn trai bất lực, đẩy cả ba vào một hành trình căng thẳng và khó lường suốt đêm đó.',
+    descriptionEn: 'During a late-night drinking session, a young woman unexpectedly grows intimate with a dangerous gangster right before the eyes of her helpless boyfriend, setting the three of them on a tense and unpredictable course through the night.',
     image: '/Images/Ephemera/Ephemera.png',
     images: ['/Images/Ephemera/Ephemera.png', '/Images/Ephemera/Ephemera2.png', '/Images/Ephemera/Ephemera3.jpg'],
-    awards: 'Giải Búp Sen Vàng\nLựa chọn chính thức · Singapore International Film Festival\nTrình chiếu tại: Liên hoan phim Tài liệu & Ngắn Quốc tế Kerala; 7th NABIFIMEX (Philippines); SeaShorts International Film Festival (Malaysia); Stadtlichter International Film Festival (Đức); Vietnamese Showcase tại Griffith Film School (Úc)',
+    awards: 'Golden Lotus Award for Best Short Film (Vietnam)\nOfficial Selection, 28th Singapore International Film Festival\nScreened at: International Documentary & Short Film Festival of Kerala; 7th Nabunturan Independent Film Exhibition (Philippines); SeaShorts International Film Festival (Malaysia); Stadtlichter International Film Festival (Germany); Vietnamese Showcase at Griffith Film School (Australia)',
   },
 ]
 
@@ -159,7 +150,8 @@ function FilmDetailPage() {
             <span className="film-number">{film.number}</span>
             <h2>{film.title}</h2>
             <strong>{film.details}</strong>
-            <p>{film.description}</p>
+            <p lang="vi">{film.description}</p>
+            {film.descriptionEn ? <p className="film-description-en" lang="en">{film.descriptionEn}</p> : null}
 
             {film.awards ? (
               <div className="film-awards film-awards-detail">
@@ -210,24 +202,22 @@ function IntroSection() {
       </div>
 
       <div className="intro-content">
-        <p>
-          Sinh ra tại Hà Nội, Việt Nam, Hồ Thanh Thảo tìm thấy điểm khởi đầu cho
-          những bộ phim của mình trong đời sống thường nhật của người dân miền
-          Bắc. Cô quan tâm đến những cảm xúc và suy nghĩ ít khi được gọi
-          tên — âm thầm nhưng dai dẳng trong đời sống thường nhật. Thảo thường
-          tìm đến những khoảnh khắc thỏa hiệp, nơi bản năng bị đè nén và sự hồn
-          nhiên dần phai nhạt.
-        </p>
-        <p>
-          Thảo tốt nghiệp Học viện Ngân hàng, nhưng đã bắt đầu tự học và thực
-          hành làm phim từ khi còn là sinh viên. Sau khi tốt nghiệp, cô chuyển
-          hướng để theo đuổi con đường làm phim độc lập. Trong quá trình làm
-          phim, Thảo thường tự viết kịch bản, đồng thời chủ động tìm kiếm nguồn
-          tài chính và xây dựng ê-kíp để hiện thực hóa các dự án của mình. Bên
-          cạnh công việc đạo diễn, cô còn tham gia vào nhiều vị trí khác nhau
-          trong các dự án phim truyện và phim tài liệu thương mại.
-        </p>
-      
+        <div className="bio-block">
+          <p lang="vi">
+            Sinh tại Hà Nội, Việt Nam, Hồ Thanh Thảo lấy cảm hứng làm phim từ đời sống thường nhật của con người miền Bắc Việt Nam. Cô quan tâm đến những cảm xúc và suy nghĩ thường không được nói thành lời — những hiện diện tinh tế nhưng dai dẳng trong cuộc sống hằng ngày. Các tác phẩm của cô thường khai thác những khoảnh khắc thỏa hiệp, nơi bản năng bị kìm nén và sự ngây thơ dần phai nhạt.
+          </p>
+          <p lang="vi">
+            Thảo tốt nghiệp Học viện Ngân hàng nhưng bắt đầu tự học làm phim và tích lũy kinh nghiệm thực tế từ khi còn là sinh viên đại học. Sau khi tốt nghiệp, cô chuyển hướng sự nghiệp để theo đuổi làm phim độc lập. Trong suốt quá trình này, cô thường tự viết kịch bản, đồng thời chủ động tìm kiếm nguồn vốn và tập hợp ê-kíp để hiện thực hóa các dự án. Bên cạnh công việc đạo diễn, cô cũng đảm nhận nhiều vai trò khác nhau trong cả phim truyện và các dự án phim tài liệu thương mại.
+          </p>
+        </div>
+        <div className="bio-block bio-block-en">
+          <p lang="en">
+            Born in Hanoi, Vietnam, Hồ Thanh Thảo draws inspiration for her films from the everyday lives of people in Northern Vietnam. She is interested in emotions and thoughts that often go unspoken — subtle yet persistent presences in daily life. Her work often explores moments of compromise, where instincts are suppressed and innocence gradually fades.
+          </p>
+          <p lang="en">
+            Thảo graduated from the Banking Academy of Vietnam but began teaching herself filmmaking and gaining hands-on experience while still a university student. After graduation, she shifted her career path to pursue independent filmmaking. Throughout the process, she often writes her own scripts, while actively seeking funding and assembling crews to bring her projects to life. Alongside directing, she has also taken on various roles in both narrative films and commercial documentary projects.
+          </p>
+        </div>
       </div>
     </section>
   )
@@ -360,7 +350,10 @@ function HomePage({ onOpenArchiveImage }) {
                 <span className="film-number">{film.number}</span>
                 <h2><Link to={`/films/${film.slug}`}>{film.title}</Link></h2>
                 <strong>{film.details}</strong>
-                <p>{film.description}</p>
+                <div className="film-description-bilingual">
+                  <p lang="vi">{film.description}</p>
+                  {film.descriptionEn ? <p className="film-description-en" lang="en">{film.descriptionEn}</p> : null}
+                </div>
               </div>
 
               <Link to={`/films/${film.slug}`} className="film-image-link">
@@ -391,19 +384,19 @@ function HomePage({ onOpenArchiveImage }) {
           </div>
 
           <div id="practice">
-            <h2>Tập tành</h2>
+            <h2>Practice</h2>
             <div className="practice-grid">
               {[0, 1, 2, 3].map((slot) => (
                 <PracticeCrossfade key={slot} images={practiceImages} slot={slot} />
               ))}
             </div>
-            <Link className="more" to="/practice">Xem tất cả →</Link>
+            <Link className="more" to="/#practice">Xem tất cả →</Link>
           </div>
 
           <div id="archive">
             <h2>Archive</h2>
             <ArchiveCarousel images={archive} onOpen={onOpenArchiveImage} />
-            <Link className="more" to="/archive">Xem tất cả →</Link>
+            <Link className="more" to="/#archive">Xem tất cả →</Link>
           </div>
         </section>
 
@@ -451,7 +444,10 @@ function FilmsPage() {
                 <span className="film-number">{film.number}</span>
                 <h3>{film.title}</h3>
                 <strong>{film.details}</strong>
-                <p>{film.description}</p>
+                <div className="film-description-bilingual">
+                  <p lang="vi">{film.description}</p>
+                  {film.descriptionEn ? <p className="film-description-en" lang="en">{film.descriptionEn}</p> : null}
+                </div>
               </div>
             </article>
           ))}
@@ -463,8 +459,8 @@ function FilmsPage() {
 
 function StoriesPage() {
   return (
-    <main className="page-shell stories-page">
-      <section className="page-section stories-page-section">
+    <main className="page-shell">
+      <section className="page-section">
         <h2>Câu chuyện</h2>
         <div className="story-list page-story-list">
           {stories.map(([title, year]) => (
@@ -485,8 +481,8 @@ function PracticePage() {
       <section className="page-section">
         <h2>Practice</h2>
         <div className="practice-grid page-practice-grid">
-          {practiceImages.map((image, index) => (
-            <img key={image} src={image} alt={`Practice ${index + 1}`} />
+          {[0, 1, 2, 3].map((slot) => (
+            <PracticeCrossfade key={slot} images={practiceImages} slot={slot} />
           ))}
         </div>
       </section>
@@ -537,7 +533,7 @@ function App() {
   const location = useLocation()
   const [selectedArchiveImage, setSelectedArchiveImage] = useState(null)
   const [activeSection, setActiveSection] = useState('about')
-  const isDetailPage = location.pathname.startsWith('/films/') || ['/stories', '/practice', '/archive'].includes(location.pathname)
+  const isDetailPage = location.pathname.startsWith('/films/')
 
   useEffect(() => {
     if (location.pathname === '/' && location.hash) {
@@ -549,18 +545,6 @@ function App() {
   }, [location.pathname, location.hash])
 
   useEffect(() => {
-    if (location.pathname === '/practice') {
-      setActiveSection('practice')
-      return
-    }
-    if (location.pathname === '/archive') {
-      setActiveSection('archive')
-      return
-    }
-    if (location.pathname === '/stories') {
-      setActiveSection('stories')
-      return
-    }
     if (location.pathname !== '/') return
 
     const sectionIds = ['about', 'films', 'stories', 'practice', 'archive']
@@ -588,8 +572,6 @@ function App() {
         <Route path="/" element={<HomePage onOpenArchiveImage={setSelectedArchiveImage} />} />
         <Route path="/films/:filmSlug" element={<FilmDetailPage />} />
         <Route path="/stories" element={<StoriesPage />} />
-        <Route path="/practice" element={<PracticePage />} />
-        <Route path="/archive" element={<ArchivePage onOpenArchiveImage={setSelectedArchiveImage} />} />
         <Route path="/support" element={<SupportPage />} />
       </Routes>
 
