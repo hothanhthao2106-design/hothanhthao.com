@@ -269,12 +269,16 @@ line-height: 1.75;
 }
 .intro-content p:last-child { margin-bottom: 0; }
 .bio-block-en {
- margin-top: 28px;
- padding-top: 22px;
- border-top: 1px solid #d7d7d2;
+  margin-top: 10px;
+  padding-top: 0;
+  border-top: 0;
 }
 .bio-block-en p {
-  color: #3a3a38;
+  color: #53534f;
+  font-size: 0.93em;
+  font-weight: 400;
+  font-style: normal;
+  line-height: 1.65;
 }
 .scroll-note {
   display: block;
@@ -315,8 +319,11 @@ line-height: 1.75;
 .film-description-en,
 .film-detail-copy .film-description-en {
   margin-top: 10px;
-  color: #4a4a47;
+  color: #565650;
+  font-size: 0.93em;
+  font-weight: 400;
   font-style: normal;
+  line-height: 1.65;
 }
 
 .films {
@@ -1068,6 +1075,11 @@ footer {
   .intro-content {
     max-height: 360px;
     font-size: 12.5px;
+  }
+  .bio-block-en p,
+  .film-description-en,
+  .film-detail-copy .film-description-en {
+    font-size: 0.93em;
   }
   .film-description-bilingual,
   .film-detail-description {
