@@ -105,12 +105,13 @@ const practiceImages = [
   '/Images/Practice/Đường phố.jpg',
 ]
 
-function Navigation({ activeSection = 'about' }) {
+function Navigation({ activeSection = 'about', aboutPhase = 'top' }) {
   const { pathname } = useLocation()
-  const isHome = pathname === '/'
+  const isCover = (pathname === '/' && activeSection === 'about')
+    || (pathname === '/about' && aboutPhase !== 'support')
 
   return (
-    <nav aria-label="Main navigation" className={isHome ? 'nav-on-cover' : 'nav-on-paper'}>
+    <nav aria-label="Main navigation" className={isCover ? 'nav-on-cover' : 'nav-on-paper'}>
       <Link to="/about" className={activeSection === 'about' ? 'active' : ''}>About</Link>
       <Link to="/films/mot-tam-hinh-thi-thuc" className={activeSection === 'upcoming' ? 'active' : ''}>Upcoming</Link>
       <Link to="/#films" className={activeSection === 'films' ? 'active' : ''}>Films</Link>
@@ -121,9 +122,12 @@ function Navigation({ activeSection = 'about' }) {
   )
 }
 
-function SiteHeader({ isDetailPage = false }) {
+function SiteHeader({ isDetailPage = false, isAboutPage = false, aboutPhase = 'top' }) {
   return (
-    <header className={`hero ${isDetailPage ? 'hero-detail' : ''}`} id="top">
+    <header
+      className={`hero ${isDetailPage ? 'hero-detail' : ''} ${isAboutPage ? `hero-about ${aboutPhase === 'scrolling' ? 'hero-about-blurred' : ''}` : ''}`}
+      id="top"
+    >
       <div className="hero-name">
         <Link to="/">Hồ Thanh Thảo</Link>
         <em>Filmmaker</em>
@@ -212,9 +216,9 @@ function ArchiveGallery({ items = archive, compact = false, onSelect }) {
   )
 }
 
-function IntroSection() {
+function IntroSection({ coverMode = false }) {
   return (
-    <section id="about" className="intro-section">
+    <section id="about" className={`intro-section ${coverMode ? 'about-cover-content' : ''}`}>
       <div className="intro-media">
         <img
           src="/Images/MKE09956-3.jpg"
@@ -464,10 +468,10 @@ function HomePage({ onOpenArchiveImage }) {
   )
 }
 
-function AboutPage() {
+function AboutPage({ coverMode }) {
   return (
-    <main>
-      <IntroSection />
+    <main className="about-page">
+      <IntroSection coverMode={coverMode} />
       <SupportSection />
     </main>
   )
@@ -576,7 +580,30 @@ function App() {
   const location = useLocation()
   const [selectedArchiveImage, setSelectedArchiveImage] = useState(null)
   const [activeSection, setActiveSection] = useState('about')
-  const isDetailPage = location.pathname === '/about' || location.pathname.startsWith('/films/') || ['/stories', '/practice', '/archive'].includes(location.pathname)
+  const [aboutPhase, setAboutPhase] = useState('top')
+  const isDetailPage = location.pathname.startsWith('/films/') || ['/stories', '/practice', '/archive'].includes(location.pathname)
+
+  useEffect(() => {
+    if (location.pathname !== '/about') {
+      setAboutPhase('top')
+      return
+    }
+
+    const updateAboutPhase = () => {
+      const support = document.getElementById('donate')
+      if (window.scrollY <= 0) {
+        setAboutPhase('top')
+      } else if (support && support.getBoundingClientRect().top > 320) {
+        setAboutPhase('scrolling')
+      } else {
+        setAboutPhase('support')
+      }
+    }
+
+    updateAboutPhase()
+    window.addEventListener('scroll', updateAboutPhase, { passive: true })
+    return () => window.removeEventListener('scroll', updateAboutPhase)
+  }, [location.pathname])
 
   useEffect(() => {
     if (location.pathname === '/' && location.hash) {
@@ -612,7 +639,7 @@ function App() {
 
     const sectionIds = ['films', 'stories', 'practice', 'archive']
     const updateActiveSection = () => {
-      let current = 'films'
+      let current = 'about'
       for (const sectionId of sectionIds) {
         const section = document.getElementById(sectionId)
         if (section && section.getBoundingClientRect().top <= 180) {
@@ -629,11 +656,15 @@ function App() {
 
   return (
     <>
-      <SiteHeader isDetailPage={isDetailPage} />
-      <Navigation activeSection={activeSection} />
+      <SiteHeader
+        isDetailPage={isDetailPage}
+        isAboutPage={location.pathname === '/about'}
+        aboutPhase={aboutPhase}
+      />
+      <Navigation activeSection={activeSection} aboutPhase={aboutPhase} />
       <Routes>
         <Route path="/" element={<HomePage onOpenArchiveImage={setSelectedArchiveImage} />} />
-        <Route path="/about" element={<AboutPage />} />
+        <Route path="/about" element={<AboutPage coverMode={aboutPhase === 'scrolling'} />} />
         <Route path="/films/:filmSlug" element={<FilmDetailPage />} />
         <Route path="/stories" element={<StoriesPage />} />
         <Route path="/practice" element={<PracticePage />} />
