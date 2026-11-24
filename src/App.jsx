@@ -591,18 +591,19 @@ function App() {
 
     const updateAboutPhase = () => {
       const support = document.getElementById('donate')
-      if (window.scrollY <= 0) {
-        setAboutPhase('top')
-      } else if (support && support.getBoundingClientRect().top > 320) {
+      if (support && support.getBoundingClientRect().top > 320) {
         setAboutPhase('scrolling')
       } else {
         setAboutPhase('support')
       }
     }
 
-    updateAboutPhase()
+    const timer = window.setTimeout(updateAboutPhase, 350)
     window.addEventListener('scroll', updateAboutPhase, { passive: true })
-    return () => window.removeEventListener('scroll', updateAboutPhase)
+    return () => {
+      window.clearTimeout(timer)
+      window.removeEventListener('scroll', updateAboutPhase)
+    }
   }, [location.pathname])
 
   useEffect(() => {
@@ -664,7 +665,7 @@ function App() {
       <Navigation activeSection={activeSection} aboutPhase={aboutPhase} />
       <Routes>
         <Route path="/" element={<HomePage onOpenArchiveImage={setSelectedArchiveImage} />} />
-        <Route path="/about" element={<AboutPage coverMode={aboutPhase === 'scrolling'} />} />
+        <Route path="/about" element={<AboutPage coverMode={aboutPhase !== 'support'} />} />
         <Route path="/films/:filmSlug" element={<FilmDetailPage />} />
         <Route path="/stories" element={<StoriesPage />} />
         <Route path="/practice" element={<PracticePage />} />

@@ -56,6 +56,7 @@ h1, h2 {
   min-height: 100vh;
   max-height: none;
   isolation: isolate;
+  overflow: clip;
   background: transparent;
 }
 .hero-about::before {
@@ -68,6 +69,14 @@ h1, h2 {
     url("/Images/Omen/Omen.png") center / cover;
   transform: scale(1.02);
   transition: filter 700ms ease, transform 700ms ease;
+}
+.hero-about .hero-name,
+.hero-about .hero-quote {
+  transition: opacity 500ms ease;
+}
+.hero-about-blurred .hero-name,
+.hero-about-blurred .hero-quote {
+  opacity: 0;
 }
 .hero-about-blurred::before {
   filter: blur(5px);
@@ -262,6 +271,26 @@ main {
 
 .about-page {
   background: transparent;
+}
+.about-page .intro-section {
+  min-height: 100vh;
+  min-height: 100svh;
+  max-width: none;
+  margin: -100vh 0 0;
+  padding: 48px 6vw;
+  background: transparent;
+  border-color: transparent;
+  animation: aboutContentRise 1.4s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+@keyframes aboutContentRise {
+  from {
+    opacity: 0.35;
+    transform: translateY(88vh);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .intro-section {
@@ -1173,6 +1202,13 @@ footer .footer-instagram:hover {
     gap: 28px;
     padding: 36px 6vw;
   }
+  .about-page .intro-section {
+    min-height: 100vh;
+    min-height: 100svh;
+    margin-top: -100vh;
+    padding: 36px 6vw;
+    transform: translateY(0);
+  }
   .intro-image {
     width: min(82%, 340px);
     max-height: 380px;
@@ -1248,6 +1284,12 @@ footer .footer-instagram:hover {
     padding-right: 96px;
   }
   footer span { display: block; margin-bottom: 8px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .about-page .intro-section {
+    animation: none;
+  }
 }
 
 @media (max-width: 760px) {
