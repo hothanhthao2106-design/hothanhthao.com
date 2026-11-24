@@ -356,10 +356,13 @@ transition: color 420ms ease;
 }
 .bio-block-en p {
   color: #53534f;
-  font-size: 1em;
+  font-size: 1.05em;
   font-weight: 400;
   font-style: normal;
   line-height: 1.65;
+}
+.intro-content .bio-block-en [lang="en"] {
+  font-size: 1.05em;
 }
 .bio-block-en p + p,
 .film-description-bilingual .film-description-en,
@@ -1217,7 +1220,7 @@ footer .footer-instagram:hover {
     max-height: 360px;
     font-size: 12.5px;
   }
-  .bio-block-en p,
+  .intro-content .bio-block-en [lang="en"] { font-size: 0.95em; }
   .film-description-en,
   .film-detail-copy .film-description-en {
     font-size: 0.88em;
