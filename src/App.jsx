@@ -106,13 +106,17 @@ const practiceImages = [
 ]
 
 function Navigation({ activeSection = 'about' }) {
+  const { pathname } = useLocation()
+  const isHome = pathname === '/'
+
   return (
-    <nav aria-label="Main navigation" className={activeSection === 'about' ? 'nav-on-cover' : 'nav-on-paper'}>
-      <Link to="/#about" className={activeSection === 'about' ? 'active' : ''}>About</Link>
+    <nav aria-label="Main navigation" className={isHome ? 'nav-on-cover' : 'nav-on-paper'}>
+      <Link to="/about" className={activeSection === 'about' ? 'active' : ''}>About</Link>
+      <Link to="/films/mot-tam-hinh-thi-thuc" className={activeSection === 'upcoming' ? 'active' : ''}>Upcoming</Link>
       <Link to="/#films" className={activeSection === 'films' ? 'active' : ''}>Films</Link>
-      <Link to="/#stories" className={activeSection === 'stories' ? 'active' : ''}>Stories</Link>
+      <Link to="/#stories" className={activeSection === 'stories' ? 'active' : ''}>Miscellaneous</Link>
       <Link to="/#practice" className={activeSection === 'practice' ? 'active' : ''}>Practice</Link>
-      <Link to="/#archive" className={activeSection === 'archive' ? 'active' : ''}>Archive</Link>
+      <Link to="/#archive" className={activeSection === 'archive' ? 'active' : ''}>Gallery</Link>
     </nav>
   )
 }
@@ -190,7 +194,7 @@ function ArchiveGallery({ items = archive, compact = false, onSelect }) {
     <div className={`archive-list ${compact ? 'archive-list-compact' : 'page-archive-list'}`}>
       {items.map((item, index) => {
         const image = typeof item === 'string' ? item : item.image
-        const title = typeof item === 'string' ? `Archive image ${index + 1}` : item.title
+        const title = typeof item === 'string' ? `Gallery image ${index + 1}` : item.title
 
         return (
           <button
@@ -237,6 +241,39 @@ function IntroSection() {
             Thảo graduated from the Banking Academy of Vietnam but began teaching herself filmmaking and gaining hands-on experience while still a university student. After graduation, she shifted her career path to pursue independent filmmaking. Throughout the process, she often writes her own scripts, while actively seeking funding and assembling crews to bring her projects to life. Alongside directing, she has also taken on various roles in both narrative films and commercial documentary projects.
           </p>
         </div>
+      </div>
+    </section>
+  )
+}
+
+function SupportSection() {
+  return (
+    <section className="support" id="donate">
+      <div className="support-intro">
+        <h2>Đồng hành cùng tôi</h2>
+        <p>
+          Ngân sách của tôi có hạn nhưng bạn có thể cải thiện điều đó.
+        </p>
+        <p className="support-description-en" lang="en">
+          I'm on a budget, but you can change that.
+        </p>
+      </div>
+
+      <div className="payment payment-qr">
+        <img src="/Images/VCB.JPG" alt="QR Vietcombank" className="qr-image" />
+      </div>
+
+      <div className="payment">
+        <strong>Donate here</strong>
+        <p>Chủ tài khoản: HO THANH THAO</p>
+        <p>Số tài khoản: 0011004290779</p>
+        <p>Ngân hàng: Vietcombank</p>
+        <p>SWIFT: BFTVVNVX</p>
+      </div>
+
+      <div className="payment">
+        <strong>Contact</strong>
+        <p>Email: hothanhthao2106@gmail.com</p>
       </div>
     </section>
   )
@@ -348,9 +385,9 @@ function ArchiveCarousel({ images, onOpen }) {
           className="landing-archive-item"
           key={`${image}-${index}`}
           onClick={() => onOpen({ title: `Archive ${index + 1}`, image })}
-          aria-label={`Xem ảnh archive ${index + 1} lớn hơn`}
+          aria-label={`Xem ảnh gallery ${index + 1} lớn hơn`}
         >
-          <img src={image} alt={`Archive ${index + 1}`} />
+          <img src={image} alt={`Gallery ${index + 1}`} />
         </button>
       ))}
     </div>
@@ -362,8 +399,8 @@ function HomePage({ onOpenArchiveImage }) {
   return (
     <>
       <main>
-        <IntroSection />
         <section className="films" id="films" aria-label="Filmography">
+          <h2 className="landing-section-title">Upcoming</h2>
           {films.map((film, index) => (
             <article className={`film-row ${index === 0 ? 'film-featured' : ''}`} key={film.number}>
               <div className="film-copy">
@@ -395,7 +432,7 @@ function HomePage({ onOpenArchiveImage }) {
 
         <section className="three-columns">
           <div id="stories">
-            <h2>Stories</h2>
+            <h2>Miscellaneous</h2>
             {stories.map(([title, year]) => (
               <Link className="text-link" to="/stories" key={title}>
                 <span>{title}</span><small>{year}</small>
@@ -415,42 +452,24 @@ function HomePage({ onOpenArchiveImage }) {
           </div>
 
           <div id="archive">
-            <h2>Archive</h2>
+            <h2>Gallery</h2>
             <ArchiveCarousel images={archive} onOpen={onOpenArchiveImage} />
             <Link className="more" to="/archive">Xem tất cả →</Link>
           </div>
         </section>
 
-        <section className="support" id="donate">
-          <div className="support-intro">
-            <h2>Đồng hành cùng dự án</h2>
-            <p>
-              Nếu bạn thích dự án của tôi hoặc thích cách tôi tò mò về cuộc sống, hãy góp một phần nhỏ để tôi có thể tiếp tục kể các câu chuyện và chia sẻ tới bạn.
-            </p>
-            <p className="support-description-en" lang="en">
-              If you enjoy my projects or share my curiosity about life, a small contribution would help me continue telling stories and sharing them with you.
-            </p>
-          </div>
-
-          <div className="payment payment-qr">
-            <img src="/Images/VCB.JPG" alt="QR Vietcombank" className="qr-image" />
-          </div>
-
-          <div className="payment">
-            <strong>Donate here</strong>
-            <p>Chủ tài khoản: HO THANH THAO</p>
-            <p>Số tài khoản: 0011004290779</p>
-            <p>Ngân hàng: Vietcombank</p>
-            <p>SWIFT: BFTVVNVX</p>
-          </div>
-
-          <div className="payment">
-            <strong>Contact</strong>
-            <p>Email: hothanhthao2106@gmail.com</p>
-          </div>
-        </section>
+        <SupportSection />
       </main>
     </>
+  )
+}
+
+function AboutPage() {
+  return (
+    <main>
+      <IntroSection />
+      <SupportSection />
+    </main>
   )
 }
 
@@ -485,7 +504,7 @@ function StoriesPage() {
   return (
     <main className="page-shell">
       <section className="page-section">
-        <h2>Câu chuyện</h2>
+        <h2>Miscellaneous</h2>
         <div className="story-list page-story-list">
           {stories.map(([title, year]) => (
             <Link className="text-link story-page-item" to="/" key={title}>
@@ -518,7 +537,7 @@ function ArchivePage({ onOpenArchiveImage }) {
   return (
     <main className="page-shell">
       <section className="page-section">
-        <h2>Archive</h2>
+        <h2>Gallery</h2>
         <ArchiveGallery items={archive} onSelect={onOpenArchiveImage} />
       </section>
     </main>
@@ -557,7 +576,7 @@ function App() {
   const location = useLocation()
   const [selectedArchiveImage, setSelectedArchiveImage] = useState(null)
   const [activeSection, setActiveSection] = useState('about')
-  const isDetailPage = location.pathname.startsWith('/films/') || ['/stories', '/practice', '/archive'].includes(location.pathname)
+  const isDetailPage = location.pathname === '/about' || location.pathname.startsWith('/films/') || ['/stories', '/practice', '/archive'].includes(location.pathname)
 
   useEffect(() => {
     if (location.pathname === '/' && location.hash) {
@@ -569,6 +588,10 @@ function App() {
   }, [location.pathname, location.hash])
 
   useEffect(() => {
+    if (location.pathname === '/about') {
+      setActiveSection('about')
+      return
+    }
     if (location.pathname === '/practice') {
       setActiveSection('practice')
       return
@@ -581,11 +604,15 @@ function App() {
       setActiveSection('stories')
       return
     }
+    if (location.pathname.startsWith('/films/')) {
+      setActiveSection(location.pathname === '/films/mot-tam-hinh-thi-thuc' ? 'upcoming' : 'films')
+      return
+    }
     if (location.pathname !== '/') return
 
-    const sectionIds = ['about', 'films', 'stories', 'practice', 'archive']
+    const sectionIds = ['films', 'stories', 'practice', 'archive']
     const updateActiveSection = () => {
-      let current = 'about'
+      let current = 'films'
       for (const sectionId of sectionIds) {
         const section = document.getElementById(sectionId)
         if (section && section.getBoundingClientRect().top <= 180) {
@@ -606,6 +633,7 @@ function App() {
       <Navigation activeSection={activeSection} />
       <Routes>
         <Route path="/" element={<HomePage onOpenArchiveImage={setSelectedArchiveImage} />} />
+        <Route path="/about" element={<AboutPage />} />
         <Route path="/films/:filmSlug" element={<FilmDetailPage />} />
         <Route path="/stories" element={<StoriesPage />} />
         <Route path="/practice" element={<PracticePage />} />
@@ -631,7 +659,14 @@ function App() {
 
       <footer>
         <span>© 2026 Hồ Thanh Thảo</span>
-  
+        <a
+          className="footer-instagram"
+          href="https://www.instagram.com/thaoho2106/"
+          target="_blank"
+          rel="noreferrer"
+        >
+          Instagram ↗
+        </a>
       </footer>
     </>
   )
