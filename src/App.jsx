@@ -97,12 +97,12 @@ const practiceImages = [
   '/Images/Practice/47684617_2788984664475613_8154136939218337792_n.jpg',
   '/Images/Practice/Nha Ma 2.jpg',
   '/Images/Practice/Nha Ma.jpg',
-  '/Images/Practice/Nhà Nghỉ.jpeg',
+  '/Images/Practice/Nhà Nghỉ.jpeg',
   '/Images/Practice/SGIFF 2018.jpg',
   '/Images/Practice/Vang lua 2.jpg',
   '/Images/Practice/Vang lua.jpg',
-  '/Images/Practice/Vang lưa 3.jpg',
-  '/Images/Practice/Đường phố.jpg',
+  '/Images/Practice/Vang lưa 3.jpg',
+  '/Images/Practice/Đường phố.jpg',
 ]
 
 function Navigation({ activeSection = 'about' }) {
