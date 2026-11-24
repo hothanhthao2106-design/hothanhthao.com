@@ -183,6 +183,21 @@ nav a {
   text-shadow: 0 2px 8px rgba(0, 0, 0, 0.72);
   transition: color 280ms ease, opacity 280ms ease;
 }
+.nav-home {
+  display: grid;
+  min-height: 28px;
+  place-items: center;
+}
+.nav-home svg {
+  width: 16px;
+  height: 16px;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.5;
+}
+.nav-home::before { display: none; }
 nav a::before {
   content: '';
   position: absolute;

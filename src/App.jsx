@@ -112,6 +112,11 @@ function Navigation({ activeSection = 'about', aboutPhase = 'top' }) {
 
   return (
     <nav aria-label="Main navigation" className={isCover ? 'nav-on-cover' : 'nav-on-paper'}>
+      <Link to="/" className="nav-home" aria-label="Trang chủ" title="Trang chủ">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="m3.5 10 8.5-7 8.5 7v10.5h-6v-7h-5v7h-6z" />
+        </svg>
+      </Link>
       <Link to="/about" className={activeSection === 'about' ? 'active' : ''}>About</Link>
       <Link to="/films/mot-tam-hinh-thi-thuc" className={activeSection === 'upcoming' ? 'active' : ''}>Upcoming</Link>
       <Link to="/#films" className={activeSection === 'films' ? 'active' : ''}>Films</Link>
